@@ -7,10 +7,11 @@
 <td>
 <div style="text-align: justify;">The Coarse Graining model representation determines both the system mass distribution and the springs network. The available Coarse-Graining models for <b>proteins</b> are listed below:</div>
 <div style="text-align: justify;">
+
 <table class="text" style="width: 576px;" border="2" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
-<td style="width: 300px;" bgcolor="#f0f0f0"><b>Cα</b> (−m 0)<br /><br />Only Cα atoms accounting for whole residue mase are considered.This CG model has two extra atoms per chain, one N atom at the begining and one C atom at the ending.</td>
+<td style="width: 300px;" bgcolor="#f0f0f0"><b>Cα</b> (−m 0)<br /><br />Only Cα atoms accounting for whole residue mase are considered. This CG model has two extra atoms per chain, one N atom at the beginning and one C atom at the end.</td>
 <td style="width: 252px;"><img src="images/sbg/imod/CA_modelR_320.jpg" width="240" border="0" /></td>
 </tr>
 <tr>
