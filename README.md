@@ -22,7 +22,7 @@ This user guide describes the usage of these iMOD components.
 To obtain the IC modes, enter the following command at the prompt.
 
 ```
-> imode <pdb>;
+> imode <pdb>
 ```
 where:
 <table class="text" style="width: 550px;" border="0" cellspacing="4" cellpadding="2">
