@@ -1,32 +1,28 @@
-
 ### How are defined Coarse Grained (CG) levels?
 
-<table bgcolor="#FFFFFF">
-<tbody>
-<tr>
-<td>
-<div style="text-align: justify;">The Coarse Graining model representation determines both the system mass distribution and the springs network. The available Coarse-Graining models for <b>proteins</b> are listed below:</div>
-<div style="text-align: justify;">
 
-<table class="text" style="width: 576px;" border="2" cellspacing="4" cellpadding="2">
+The Coarse Graining model representation determines both the system mass distribution and the springs network. The available Coarse-Graining models for <b>proteins</b> are listed below:
+
+<table width="80%" border="2" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
-<td style="width: 300px;" bgcolor="#f0f0f0"><b>Cα</b> (−m 0)<br /><br />Only Cα atoms accounting for whole residue mase are considered. This CG model has two extra atoms per chain, one N atom at the beginning and one C atom at the end.</td>
-<td style="width: 252px;"><img src="assets/CA_modelR_320.jpg" width="240" border="0" /></td>
+<td width="50%" bgcolor="#f0f0f0"><b>Cα</b> (−m 0)<br /><br />Only Cα atoms accounting for whole residue mase are considered.This CG model has two extra atoms per chain, one N atom at the begining and one C atom at the ending.</td>
+<td width="50%"><img src="assets/CA_modelR_320.jpg" width="240" border="0" /></td>
 </tr>
 <tr>
-<td style="width: 300px;" bgcolor="#f0f0f0"><b>3BB2R</b> (−m 1)<br /><br />There are five atoms per residue. Three represent the backbone: N, Cα and carbonylic C; and two represent the side chains: Cβ and a pseudo-atom (R) placed on the center of mass of the remaining side chain atoms. Note that Glycine and Alanine will be modeled by 3 and 4 atoms, respectively.</td>
-<td style="width: 252px;"><img src="assets/3BB2R_modelR_320.jpg" width="240" border="0" /></td>
+<td width="50%" bgcolor="#f0f0f0"><b>3BB2R</b> (−m 1)<br /><br />There are five atoms per residue. Three represent the backbone: N, Cα and carbonylic C; and two represent the side chains: Cβ and a pseudo-atom (R) placed on the center of mass of the remaining side chain atoms. Note that Glycine and Alanine will be modeled by 3 and 4 atoms, respectively.</td>
+<td width="50%"><img src="assets/3BB2R_modelR_320.jpg" width="240" border="0" /></td>
 </tr>
 <tr>
-<td style="width: 300px;" bgcolor="#f0f0f0"><b>Full-atom</b> (−m 2, <i><b>default</b></i>)<br /><br />All heavy atoms are considered, each one accounting for its own mass.</td>
-<td style="width: 252px;"><img src="assets/Fullatom_modelR_320.jpg" width="240" border="0" /></td>
+<td width="50%" bgcolor="#f0f0f0"><b>Full-atom</b> (−m 2, <i><b>default</b></i>)<br /><br />All heavy atoms are considered, each one accounting for its own mass.</td>
+<td width="50%"><img src="assets/Fullatom_modelR_320.jpg" width="240" border="0" /></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div style="text-align: justify;">Next figures illustrate the appearance of the Cα and 3BB2R CG models:</div>
-<div style="text-align: justify;">
+
+
+Next figures illustrate the appearance of the Cα and 3BB2R CG models:</div>
+
 <table class="text" style="width: 480px;" border="0" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
@@ -39,10 +35,9 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div style="text-align: justify;">On the left model only Cα atoms (yellow) are considered. On the right, the 3BB2R model (right) have five atoms per residue: three representing the backbone (N, Cα and carbonylic C, in blue, yellow and cyan, respectively), and two representing the side chains (Cβ and a pseudo-atom placed on the center of mass of the remaining side chain, in cyan and red, respectively). </div>
-<div style="text-align: justify;">At this moment, only the Full-atom representation is available for <b>nucleic acids</b>:</div>
-<div style="text-align: justify;">
+On the left model only Cα atoms (yellow) are considered. On the right, the 3BB2R model (right) have five atoms per residue: three representing the backbone (N, Cα and carbonylic C, in blue, yellow and cyan, respectively), and two representing the side chains (Cβ and a pseudo-atom placed on the center of mass of the remaining side chain, in cyan and red, respectively). 
+At this moment, only the Full-atom representation is available for <b>nucleic acids</b>:</div>
+
 <table class="text" style="width: 480px;" border="0" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
@@ -60,31 +55,19 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h1 class="uk-accordion-title"><strong>How to use CG models?</strong></h1>
-<div class="uk-accordion-content">
-<p>To illustrate the usage of different CG models lets try the following examples:</p>
-<ul>
-<li><a href="#iMODE_CG">Computing modes at different CG levels.</a></li>
-<li><a href="#iMC_CG">Monte-Carlo at different CG levels. </a><br />
-<p align="center"><a name="iMODE_CG"></a>--------------- Computing desired Normal Modes in different CG models. --------------- </p>
-</li>
-</ul>
-<p>To choose the desired CG model -m option must be added to the basic command followed by model identifier. The basename option (-o) will be used to avoid overwriting of previous re.</p>
+
+### How to use CG models?
+
+To choose the desired CG model -m option must be added to the basic command followed by model identifier. The basename option (-o) will be used to avoid overwriting of previous re.</p>
 <div class="box-note">Ca       -&gt; imode 1ab3.pdb -m 0 -o imodeCA <br /> 3BB2R-&gt; imode 1ab3.pdb -m 1 -o imode3BB2R</div>
 <p>You can check the CG models using Jmol: <a style="background-color: #dbe5f8;" title="Click here to view in Jmol" href="http://chaconlab.org/"> <img src="images/sbg/jmol_icon.bmp" height="14" border="0" /> Ca model</a> and <a style="background-color: #dbe5f8;" title="Click here to view in Jmol" href="http://chaconlab.org/"> <img src="images/sbg/jmol_icon.bmp" height="14" border="0" /> 3BB2R model</a>.</p>
-<p>In <b>Ca</b> case, an extra file is produced: <b>imodeCA_ncac.pdb</b>. This PDB file is just a standard PDB containing the coordinates of backbone nitrogen (N), and alpha (Ca) and carbonylic carbons (C), i.e. those atoms needed to define the f and ? dihedral angles. This is the <b>minimum required structure to use our Ca model</b>. A structure with only Ca atoms will not work. In this case, an external software to generate backbone N and C atoms is mandatory. For example, you can use the on-line server: <a href="http://bioserv.rpbs.univ-paris-diderot.fr/cgi-bin/SABBAC">SABBAC</a>.</p>
-<p>To animate this modes, the CG model introduced to iMOVE should be the same used in iMODE:</p>
+<p>In <b>Ca</b> case, an extra file is produced: <b>imodeCA_ncac.pdb</b>. This PDB file is just a standard PDB containing the coordinates of backbone nitrogen (N), and alpha (Ca) and carbonylic carbons (C), i.e. those atoms needed to define the f and ? dihedral angles. This is the <b>minimum required structure to use our Ca model</b>. A structure with only Ca atoms will not work. In this case, external software to generate backbone N and C atoms is mandatory. For example, you can use the online server: <a href="http://bioserv.rpbs.univ-paris-diderot.fr/cgi-bin/SABBAC">SABBAC</a>.</p>
+<p>To animate these modes, the CG model introduced to iMOVE should be the same used in iMODE:</p>
 <div class="box-note">Ca       -&gt; imove imodeCA_ncac.pdb imodeCA_ic.evec imoveCA_1.pdb 1 -m 0 -a 0.4<br /> 3BB2R-&gt; imove 1ab3.pdb imode3BB2R_ic.evec imove3BB2R_1.pdb 1 -m 1</div>
-<p>In Ca case there are less springs than in full-atom. Thus, the amplitude was lowered (-a 0.4). In 3BB2R case it is not neccessary such modification since the number of springs is similar to full-atom.</p>
+<p>In Ca case there are less springs than in full-atom. Thus, the amplitude was lowered (-a 0.4). In 3BB2R case, it is not necessary such modification since the number of springs is similar to full-atom.</p>
 <p>Its convenient to convert CG models to a full atom representation to avoid problems of compatibility with visualization software:</p>
 <div class="box-note">Ca       -&gt;<br /> imove 1ab3.pdb imodeCA_ic.evec imoveCA_FULL_1.pdb 1 -m 0 -a 0.4 --model_out 2 <br /> 3BB2R-&gt;<br /> imove 1ab3.pdb imode3BB2R_ic.evec imove3BB2R_FULL_1.pdb 1 -m 1 --model_out 2</div>
-<p align="center"><a name="iMC_CG"></a>--------------- Monte-Carlo in different CG models. ---------------</p>
-<p>To compute MC trajectories:</p>
-<div class="box-note">Ca       -&gt; imc imodeCA_ncac.pdb imodeCA_ic.evec -m 0 -a 0.1 -o imcCA <br /> 3BB2R-&gt; imc 1ab3.pdb imode3BB2R_ic.evec -m 1 -o imc3BB2R</div>
-<p>As before, to maintain the motion appearance the amplitude was lowered (-a 0.1) in Ca case.</p>
-<p>To obtain full-atom trajectories from Ca or 3BB2R modes:</p>
-<div class="box-note">Ca      -&gt;<br />imode 1ab3.pdb -m 0 -o imodeCA --model_out 2 <br /> imc 1ab3.pdb imodeCA_icf.evec -m 2 -a 0.1 -o imcCA_FULL <br /> 3BB2R-&gt;<br />imode 1ab3.pdb -m 1 -o imode3BB2R --model_out 2 <br /> imc 1ab3.pdb imode3BB2R_icf.evec -m 2 -o imc3BB2R_FULL</div>
+
 <p>An extra output file named <b>&lt;basename&gt;_icf.evec</b> will contain the output modes of the corresponding CG level.</p>
 </div>
 
