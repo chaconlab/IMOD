@@ -1,21 +1,19 @@
 ### How are defined Coarse Grained (CG) levels?
 
-
-The Coarse Graining model representation determines both the system mass distribution and the springs network. The available Coarse-Graining models for <b>proteins</b> are listed below:
-
-<table width="80%" border="2" cellspacing="4" cellpadding="2">
+The coarse-graining model representation determines both the system mass distribution and the springs network. The available Coarse-Graining models for <b>proteins</b> are listed below:
+<table width="480px" border="0" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
-<td width="50%" bgcolor="#f0f0f0"><b>Cα</b> (−m 0)<br /><br />Only Cα atoms accounting for whole residue mase are considered.This CG model has two extra atoms per chain, one N atom at the begining and one C atom at the ending.</td>
-<td width="50%"><img src="assets/CA_modelR_320.jpg" width="240" border="0" /></td>
+<td width="30%" bgcolor="#f0f0f0"><b>Cα</b> (−m 0)<br/><br/>Only Cα atoms accounting for whole residue mase are considered. This CG model has two extra atoms per chain, one N atom at the beginning and one C atom at the end.</td>
+<td width="30%"><img src="assets/CA_modelR_320.jpg" width="240" border="0" /></td>
 </tr>
 <tr>
-<td width="50%" bgcolor="#f0f0f0"><b>3BB2R</b> (−m 1)<br /><br />There are five atoms per residue. Three represent the backbone: N, Cα and carbonylic C; and two represent the side chains: Cβ and a pseudo-atom (R) placed on the center of mass of the remaining side chain atoms. Note that Glycine and Alanine will be modeled by 3 and 4 atoms, respectively.</td>
-<td width="50%"><img src="assets/3BB2R_modelR_320.jpg" width="240" border="0" /></td>
+<td width="30%" bgcolor="#f0f0f0"><b>3BB2R</b> (−m 1)<br /><br />There are five atoms per residue. Three represent the backbone: N, Cα and carbonylic C; and two represent the side chains: Cβ and a pseudo-atom (R) placed on the center of mass of the remaining side chain atoms. Note that Glycine and Alanine will be modeled by 3 and 4 atoms, respectively.</td>
+<td width="30%"><img src="assets/3BB2R_modelR_320.jpg" width="240" border="0" /></td>
 </tr>
 <tr>
-<td width="50%" bgcolor="#f0f0f0"><b>Full-atom</b> (−m 2, <i><b>default</b></i>)<br /><br />All heavy atoms are considered, each one accounting for its own mass.</td>
-<td width="50%"><img src="assets/Fullatom_modelR_320.jpg" width="240" border="0" /></td>
+<td width="30%" bgcolor="#f0f0f0"><b>Full-atom</b> (−m 2, <i><b>default</b></i>)<br /><br />All heavy atoms are considered, each one accounting for its mass.</td>
+<td width="30%"><img src="assets/Fullatom_modelR_320.jpg" width="240" border="0" /></td>
 </tr>
 </tbody>
 </table>
@@ -347,63 +345,4 @@ To reduce the dimensionality of the problem With iMOD you can fix in many ways t
 <p>To customize just change "1" by "0" for fixing ICs, save it, and use with imode with −f option to load it and restrict the NMA only with the non-fixed ICs as variables.</p>
 <p>The extra zeros at some lines account for residues lacking corresponding ICs, i.e. Glycines and Alanines (no χ), and Prolines (no φ and χ). Note that the −x option must be added on previous commands if you plan to keep mobile some χ dihedral angles. If the macromolecule had several chains, six inter-chain rotational/translational ICs are added: three x, y, and z translations and three rotations around x, y and z axis, respectively. For example, if there is a new chain after residue 187 (index 186) the mask file will be:</p>
 <pre>.........<br />186 1 0 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1 0 1<br />.........</pre>
-</div>
-<h1 class="uk-accordion-title"><strong> Be free to include protein, DNA, RNA, and rigid ligands </strong>altogether</h1>
-<div class="uk-accordion-content">Any domain/s in our macromolecule can be fixed using the −f option. This way both dimensionality will be reduced and undesired distortions will be avoided. For illustrative purposes, we will fix two GroEL domains.
-<p>GroEL is composed of three domains: apical (top red), intermediate (cyan), and equatorial (bottom red). The apical domain interacts with folding intermediates and GroES, the equatorial domain hydrolyzes ATP, and the intermediate domain is flexible and connects these apical and equatorial domains.</p>
-<table style="width: 400px;" border="0" cellspacing="2" cellpadding="0" align="center">
-<tbody>
-<tr>
-<td><a href="assets/1aonCartFIX_640.jpg"><img src="assets/1aonCartFIX_320.jpg" /></a></td>
-</tr>
-</tbody>
-</table>
-<p>To obtain a successful fitting the structure should be maintained as flexibile as possible, i.e. if we fix very much the structure will be very rigid and the target conformation will not be addressed. To this end the apical and equatorial domains will be fixed while keeping the intermediate domain fully flexible. In the mask file <b><a href="media/files/imodfitDOM.fix">imodfitDOM.fix</a></b> only the ICs belonging to regions of the intermediate domain are kept mobile: 136-193 and 331-409 (indexed from 1 to 524). Further information about the mask file generation is provided in Q1 within this FAQ.</p>
-<div class="&quot;box-content">imodfit 1aon.pdb 1oel.ccp4 10 0 -i 50000 -t -f imodfitDOM.fix -o imodfitDOM</div>
-<p>The output is the following:</p>
-<pre>imodfit&gt;
-imodfit&gt; Welcome to iMODFIT v1.28
-imodfit&gt;
-imodfit&gt; Model PDB file: 1aon.pdb
-molinf&gt; Protein 1 chain 1 segment 1 residues: 524 atoms: 3847
-molinf&gt; SUMMARY:
-molinf&gt; Number of Molecules ... 1
-molinf&gt; Number of Chain ....... 1
-molinf&gt; Number of Segments .... 1
-molinf&gt; Number of Groups ...... 524
-molinf&gt; Number of Atoms ....... 3847
-molinf&gt;
-imodfit&gt; Coarse-Graining model: Full-Atom (no coarse-graining)
-imodfit&gt; Selected model number of residues: 524
-imodfit&gt; Selected model number of (pseudo)atoms: 3847
-imodfit&gt; Target Map file: 1oel.ccp4
-imodfit&gt; Best filtration method: 2 FT(x10)=0.090s Kernel(x10)=0.080s
-imodfit&gt; Number of Inter-segment coords: 0 (Rot+Trans)
-imodfit&gt; Number of Internal Coordinates: 1033 (Hessian rank)
-imodfit&gt; Input CG-model Fixed Internal Coordinates: 760
-imodfit&gt; Input CG-model Mobile Internal Coordinates (size) = 273
-imodfit&gt; Range of used modes: 1-54 (19.8%)
-imodfit&gt; Number of excited/selected modes: 1(nex)
-imodfit&gt;
-imodfit&gt; Iter score Corr. NMA NMA_time
-imodfit&gt; 0 0.336409 0.663591 0 0.73 sec
-imodfit&gt; 199 0.324457 0.675543 1 0.50 sec
-imodfit&gt; 379 0.285427 0.714573 2 0.49 sec
-.................................................
-imodfit&gt; 12857 0.080700 0.919300 14 0.50 sec
-imodfit&gt; 50000 0.064124 0.935876 END
-imodfit&gt;
-imodfit&gt; Movie file: imodfitDOM_movie.pdb
-imodfit&gt; Final Model: imodfitDOM_fitted.pdb
-imodfit&gt; Score file: imodfitDOM_score.txt
-imodfit&gt; Log file: imodfitDOM.log
-imodfit&gt;
-imodfit&gt; Success! Time elapsed 00h. 16' 18''
-imodfit&gt; Bye!
-</pre>
-<p>The solution is only 3.77 Å Cα RMSD from the target structure used to simulate the map. This is a good result for a structure with 75% of its ICs fixed. Note that, to obtain a good result with such a fixed structure, the number of iterations was increased (-i 50000). If you increase the number of iterations even more you will reach a lower RMSD.</p>
-<p>You can play interactively the trajectory movie in <a style="background-color: #dbe5f8;" title="Click here to view in Jmol" href="http://chaconlab.org/"><img src="images/sbg/jmol_icon.bmp" height="14" border="0" /> Jmol</a>, check the fitted structure <a style="background-color: #dbe5f8;" title="Click here to view in Jmol" href="http://chaconlab.org/"><img src="images/sbg/jmol_icon.bmp" height="14" border="0" /> <b>imodfitDOM_fitted.pdb</b></a> and watch the flash movie below. For illustrative purposes, the fixed domains were colored in red.</p>
-<div style="text-align: center;"><video controls="controls" width="320" height="259">
-  <source src="https://chaconlab.org/video/imod/1aoncartfix.mp4" type="video/mp4" />
-  Your browser does not support HTML5 video.
-  </video></div>
+
