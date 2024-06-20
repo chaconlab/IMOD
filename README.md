@@ -2,7 +2,7 @@
 
 iMOD is a versatile toolkit to perform Normal Mode Analysis (NMA) in internal coordinates (IC) on both protein and nucleic acid atomic structures. Vibrational analysis, motion animations, morphing trajectories, and Monte-Carlo simulations can be easily carried out at different scales of resolution using this toolkit. You can also have access to the latest version from our <a href="http://imods.chaconlab.org/">iMODS</a> online server
 
-## References
+#### References
 
 - López-Blanco JR, Garzón JI, Chacón P. (2011). iMod: multipurpose normal mode analysis in internal coordinates. Bioinformatics. 27 (20): 2843-2850.<a href="http://www.ncbi.nlm.nih.gov/pubmed/21873636"><img src="https://chaconlab.org/images/publications/pubmed.jpg" alt="" align="top" border="0" /></a><a href="https://chaconlab.org/PDF/Bioinformatics2011.pdf"><img src="https://chaconlab.org/images/publications/acrobaticon4.gif" alt="" border="0" /></a>
 
@@ -46,7 +46,7 @@ where:
 <li><i>imode_defmob.txt </i>--&gt; Plain text file with deformabiliy, mobility and B-factor data.</li>
 </ul>
 
-### Basic Options
+#### Basic Options
 
 Just add the following basic options to customize the IC modes generation after the minimum command line shown above.</p>
 <table class="text" style="width: 550px;" border="2" cellspacing="4" cellpadding="2">
@@ -105,7 +105,7 @@ Just add the following basic options to customize the IC modes generation after 
 </tbody>
 </table>
 
-### Advanced options
+#### Advanced options
 
 <p>Only for real expert users!</p>
 <pre>   --ss &lt;string&gt;
@@ -221,7 +221,7 @@ where:
 </table>
 <p>The unique output is the Multi-PDB file named &lt;out_pdb&gt;</p>
 
-### Basic Options
+#### Basic Options
 
 In this section, the basic options to customize animations are detailed.
 <table class="text" style="width: 550px;" border="2" cellspacing="4" cellpadding="2">
@@ -257,7 +257,7 @@ In this section, the basic options to customize animations are detailed.
 </tbody>
 </table>
 
-### Advanced options
+#### Advanced options
 
 Only for real expert users!
 <pre>   --cart
@@ -312,7 +312,7 @@ An alternative way to visualize a normal mode motion is the arrow representation
 <pre>source &lt;filename&gt;
 </pre>
 
-### Basic Options
+#### Basic Options
 
 In this section, the basic options to customize mode visualization are detailed.
 <table class="text" style="width: 550px;" border="2" cellspacing="4" cellpadding="2">
@@ -328,7 +328,7 @@ In this section, the basic options to customize mode visualization are detailed.
 </tbody>
 </table>
 
-### Advanced options
+#### Advanced options
 
 <p>Only for real expert users!</p>
 <pre>   --color &lt;string&gt;
@@ -378,7 +378,7 @@ where:
 </table>
 <p>The default output trajectory will be named <b>imc.pdb</b></p>
 
-### Basic Options
+#### Basic Options
 
 In this section, the basic options to customize trajectories are detailed.
 <table class="text" style="width: 550px;" border="2" cellspacing="4" cellpadding="2">
@@ -438,7 +438,7 @@ In this section, the basic options to customize trajectories are detailed.
 </tbody>
 </table>
 
-### Advanced options
+#### Advanced options
 
 <pre>   --thr &lt;float&gt;
       Enable filtering by absolute tolerance (default=disabled). 
@@ -504,7 +504,7 @@ where:
 </table>
 <p>The trajectory movie will be automatically named <b>imorph_movie.pdb</b></p>
 
-### Basic Options
+#### Basic Options
 
 In this section, the basic options to customize your morphing are detailed. Just add them after the minimal command shown above.
 <table class="text" style="width: 550px;" border="2" cellspacing="4" cellpadding="2">
@@ -575,7 +575,7 @@ In this section, the basic options to customize your morphing are detailed. Just
 </tbody>
 </table>
 
-### Advanced options
+#### Advanced options
 
 <p>Only for real expert users!</p>
 <pre>   --ss &lt;string&gt;
