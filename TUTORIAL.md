@@ -12,15 +12,15 @@
 <tbody>
 <tr>
 <td style="width: 300px;" bgcolor="#f0f0f0"><b>Cα</b> (−m 0)<br /><br />Only Cα atoms accounting for whole residue mase are considered. This CG model has two extra atoms per chain, one N atom at the beginning and one C atom at the end.</td>
-<td style="width: 252px;"><img src="images/sbg/imod/CA_modelR_320.jpg" width="240" border="0" /></td>
+<td style="width: 252px;"><img src="assets/CA_modelR_320.jpg" width="240" border="0" /></td>
 </tr>
 <tr>
 <td style="width: 300px;" bgcolor="#f0f0f0"><b>3BB2R</b> (−m 1)<br /><br />There are five atoms per residue. Three represent the backbone: N, Cα and carbonylic C; and two represent the side chains: Cβ and a pseudo-atom (R) placed on the center of mass of the remaining side chain atoms. Note that Glycine and Alanine will be modeled by 3 and 4 atoms, respectively.</td>
-<td style="width: 252px;"><img src="images/sbg/imod/3BB2R_modelR_320.jpg" width="240" border="0" /></td>
+<td style="width: 252px;"><img src="assets/3BB2R_modelR_320.jpg" width="240" border="0" /></td>
 </tr>
 <tr>
 <td style="width: 300px;" bgcolor="#f0f0f0"><b>Full-atom</b> (−m 2, <i><b>default</b></i>)<br /><br />All heavy atoms are considered, each one accounting for its own mass.</td>
-<td style="width: 252px;"><img src="images/sbg/imod/Fullatom_modelR_320.jpg" width="240" border="0" /></td>
+<td style="width: 252px;"><img src="assets/Fullatom_modelR_320.jpg" width="240" border="0" /></td>
 </tr>
 </tbody>
 </table>
@@ -34,8 +34,8 @@
 <td align="center"><b>3BB2R-model</b></td>
 </tr>
 <tr>
-<td><img src="images/sbg/imod/1ab3CA_320.jpg" width="240" border="0" /></td>
-<td><img src="images/sbg/imod/1ab33BB2R_320.jpg" width="240" border="0" /></td>
+<td><img src="assets/1ab3CA_320.jpg" width="240" border="0" /></td>
+<td><img src="assets/1ab33BB2R_320.jpg" width="240" border="0" /></td>
 </tr>
 </tbody>
 </table>
@@ -50,8 +50,8 @@
 <td align="center"><b>DNA</b></td>
 </tr>
 <tr>
-<td><img src="images/sbg/imod/RNA_model_320.jpg" width="240" border="0" /></td>
-<td><img src="images/sbg/imod/DNA_model_320.jpg" width="240" border="0" /></td>
+<td><img src="assets/RNA_model_320.jpg" width="240" border="0" /></td>
+<td><img src="assets/DNA_model_320.jpg" width="240" border="0" /></td>
 </tr>
 </tbody>
 </table>
@@ -124,8 +124,8 @@ For a given structure and CG model, normal modes are determined by its potential
 <td align="center"><b>Simple distance cutoff</b><br />(Constant stiffness)</td>
 </tr>
 <tr>
-<td><img style="border: 0;" title="Inverse exponential" src="images/sbg/imod/1ab3CAki_320.jpg" width="320" border="0" /></td>
-<td><img style="border: 0;" title="Simple distance cutoff" src="images/sbg/imod/1ab3CAkc_320.jpg" width="320" border="0" /></td>
+<td><img style="border: 0;" title="Inverse exponential" src="assets/1ab3CAki_320.jpg" width="320" border="0" /></td>
+<td><img style="border: 0;" title="Simple distance cutoff" src="assets/1ab3CAkc_320.jpg" width="320" border="0" /></td>
 </tr>
 </tbody>
 </table>
@@ -153,7 +153,7 @@ XX   -1  1 3.8 6
 <div class="box-note">imode 1ab3.pdb -P 2 --func funcTSS.txt --ss 1ab3.ss -o imodeTSSE</div>
 <p>For example, you can use DSSP to compute SS (<a href="files/1ab3.dssp">1ab3.dssp</a>) and with the aid of <a href="files/dssp2ss.pl">this</a> simple perl script you can convert it into our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>)</p>
 <div class="box-note">perl dssp2ss.pl 1ab3.dssp 1ab3.ss</div>
-<p>Our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>) is a simple two column ASCII file. The first column corresponds to the sequence index, and the second one to a single character SS identifiers.  </p>
+<p>Our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>) is a simple two column ASCII file. The first column corresponds to the sequence index, and the second one to a single-character SS identifier.  </p>
 <p align="left"><a name="P_TOP"></a>Customize potential energy by topology only.</p>
 <p>The basic command for topology is:</p>
 <div class="box-note">imode 1ab3.pdb -P 2 --func funcTOP.txt -o imodeTOP</div>
@@ -177,14 +177,14 @@ HE     -1  3 3.8 6
 XX     -1  1 3.8 6
 </pre>
 <p>This file applies different functions to atom pairs belonging to residues with SS: H vs. H (HH), E vs. E (EE) and H vs. E (HE). The XX function will be applied to remaining pairs of atoms.</p>
-<p>Given the non-Helical or non-Sheet regions are more flexible than the rest, some times may be interesting to increase flexibility in those regions. Corresponding command would be:</p>
+<p>Given the non-Helical or non-Sheet regions are more flexible than the rest, sometimes may be interesting to increase flexibility in those regions. The corresponding command would be:</p>
 <div class="box-note">imode 1ab3.pdb -P 2 --func funcCX.txt -o imodeCX</div>
 <p>The functions file (<a href="media/files/funcCX.txt">funcCX.txt</a>) is:</p>
 <pre># SS (j-i)   k  x0 p
 CC     -1  0.2 3.8 6
 XX     -1    1 3.8 6
 </pre>
-<p>The springs associated to last example are represented below. First and second function springs are colored in orange and red, respectively. For clarity bo th kinds of springs were shown with similar thickness.</p>
+<p>The springs associated to the last example are represented below. First and second function springs are colored in orange and red, respectively. For clarity, both kinds of springs were shown with similar thicknesses.</p>
 <table class="text" style="width: 670px;" border="0" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
@@ -193,7 +193,7 @@ XX     -1    1 3.8 6
 </tbody>
 </table>
 <p align="center"><a name="P_K"></a>--------------- User custom potential. ---------------</p>
-<p>The user can define its own potential thought a file using the -K option. Type at the command prompt:</p>
+<p>The user can define its potential thought a file using the -K option. Type at the command prompt:</p>
 <div class="box-note">imode 1ab3.pdb -K imodeKi_Kfile.dat -o imodeCP</div>
 <p>This ASCII file (<a href="media/files/imodeKi_Kfile.dat">imodeKi_Kfile.dat</a>) has three columns to define the force constants (K) for each atomic pair:</p>
 <pre>1 2 9.962940E-01
@@ -210,7 +210,7 @@ XX     -1    1 3.8 6
 
 ### How to deal with huge systems?
 
-In iMOD, the maximum macromolecular size allowed to perform NMA is constrained by the amount of memory needed to diagonalize the Hessian matrix, and it depends on the employed architecture. For example, in a standard 32-bit linux box (the maximum memory addressed per program is about 2Gb) so it can solve systems up to approximately 15000 degrees of freedom (DoF), i.e. about 7000-8000 aminoacids in proteins or 3000 nucleotids in nucleic acids. On the other hand, 64-bit machines are only limited by available RAM. For example, NMA of a 50000 DoFs system would need a 64-bit computer with about 30Gb of RAM memory. Therefore  a dimensionality reduction is mandatory when the system under study becomes huge for standard computers. To this end, we can fix some internal coordinates (ICs)  to reduce the number of degrees of freedom and fit the matrices into memory. There are three ways to accomplish this:
+In iMOD, the maximum macromolecular size allowed to perform NMA is constrained by the amount of memory needed to diagonalize the Hessian matrix, and it depends on the employed architecture. For example, in a standard 32-bit linux box (the maximum memory addressed per program is about 2Gb) so it can solve systems up to approximately 15000 degrees of freedom (DoF), i.e. about 7000-8000 amino acids in proteins or 3000 nucleotides in nucleic acids. On the other hand, 64-bit machines are only limited by available RAM. For example, NMA of a 50000 DoFs system would need a 64-bit computer with about 30Gb of RAM memory. Therefore a dimensionality reduction is mandatory when the system under study becomes huge for standard computers. To this end, we can fix some internal coordinates (ICs)  to reduce the number of degrees of freedom and fit the matrices into memory. There are three ways to accomplish this:
 <ul>
 <li>Fixing custom ICs.</li>
 <li>Fixing by secondary structure</li>
@@ -291,14 +291,14 @@ This way, only 6666 ICs were considered. Below you can check 5th and 18th normal
   <source src="images/video/imod/1cwpDH09_5.mp4" type="video/mp4" />
   Your browser does not support HTML5 video.
   </video></td>
-<td><img src="images/sbg/imod/1cwpDH09_5_arrows_320.jpg" width="320" /></td>
+<td><img src="assets/1cwpDH09_5_arrows_320.jpg" width="320" /></td>
 </tr>
 <tr>
 <td><video controls="controls" width="320" height="259">
   <source src="images/video/imod/1cwpDH09_18.mp4" type="video/mp4" />
   Your browser does not support HTML5 video.
   </video></td>
-<td><img src="images/sbg/imod/1cwpDH09_18_arrows_320.jpg" width="320" /></td>
+<td><img src="asserts/1cwpDH09_18_arrows_320.jpg" width="320" /></td>
 </tr>
 </tbody>
 </table>
@@ -306,12 +306,12 @@ This way, only 6666 ICs were considered. Below you can check 5th and 18th normal
 <table border="0" cellspacing="0" cellpadding="0" align="center">
 <tbody>
 <tr>
-<td><img title="Closed CCMV" src="images/sbg/imod/ccmv_closed_320.jpg" width="320" /></td>
-<td><img title="Swollen CCMV" src="images/sbg/imod/ccmv_open_320.jpg" width="320" /></td>
+<td><img title="Closed CCMV" src="assets/ccmv_closed_320.jpg" width="320" /></td>
+<td><img title="Swollen CCMV" src="assets/ccmv_open_320.jpg" width="320" /></td>
 </tr>
 </tbody>
 </table>
-As a consequence of both motion and system size we had to carry it out in two steps using some extra options: imorph 1cwp_prot.pdb ccmv_swln_1_full.vdb -i 200000 -r 1 -e 0.05 --morepdbs --nowrmsd -o ccmvmorph<br /> imorph ccmvmorph_fitted.pdb ccmv_swln_1_full.vdb -i 300000 -r 1 -n 0.99999 --morepdbs --prob plain -o ccmvmorph2 In first step we added: -e 0.05 to speed up convergence, --nowrmsd to disable the Weighted-RMSD alingment (which is not suited to huge motions), and --more_pdbs to force saving the fitted structure. Note this fitted structure was still about 5 Å Ca RMSD away form target. In a second refinement step, we used all available modes (-n 0.99999) with a different mode selection scheme (--prob plain). Since we were closer to the target structure, the --nowrmsd option was removed. Note that to minimize NMA time in both steps only the rotational/translational ICs were considered (-r 1). Now a successful morphing <a href="media/files/ccmvmorph2_fitted.pdb.gz">result</a> is obtained. It's only 0.95 Å Ca RMSD from target structure. You can check its beautiful movie below.
+As a consequence of both motion and system size we had to carry it out in two steps using some extra options: imorph 1cwp_prot.pdb ccmv_swln_1_full.vdb -i 200000 -r 1 -e 0.05 --morepdbs --nowrmsd -o ccmvmorph<br /> imorph ccmvmorph_fitted.pdb ccmv_swln_1_full.vdb -i 300000 -r 1 -n 0.99999 --morepdbs --prob plain -o ccmvmorph2 In first step we added: -e 0.05 to speed up convergence, --nowrmsd to disable the Weighted-RMSD alingment (which is not suited to huge motions), and --more_pdbs to force saving the fitted structure. Note this fitted structure was still about 5 Å Ca RMSD away from the target. In a second refinement step, we used all available modes (-n 0.99999) with a different mode selection scheme (--prob plain). Since we were closer to the target structure, the --nowrmsd option was removed. Note that to minimize NMA time in both steps only the rotational/translational ICs were considered (-r 1). Now a successful morphing <a href="media/files/ccmvmorph2_fitted.pdb.gz">result</a> is obtained. It's only 0.95 Å Ca RMSD from the target structure. You can check out its beautiful movie below.
 <div style="text-align: center;"><video controls="controls" width="320" height="259">
   <source src="images/video/imod/ccmvmorph_movie.mp4" type="video/mp4" />
   Your browser does not support HTML5 video.
@@ -336,8 +336,8 @@ To reduce the dimensionality of the problem With iMOD you can fix in many ways t
 <td align="center"><b>RNA</b></td>
 </tr>
 <tr>
-<td width="320"><img style="border: 0;" title="Full-Atom" src="images/sbg/imod/Fullatom_modelR_320.jpg" width="240" border="0" /></td>
-<td><img style="border: 0;" title="RNA" src="images/sbg/imod/RNA_model_320.jpg" width="240" border="0" /></td>
+<td width="320"><img style="border: 0;" title="Full-Atom" src="assets/Fullatom_modelR_320.jpg" width="240" border="0" /></td>
+<td><img style="border: 0;" title="RNA" src="assets/RNA_model_320.jpg" width="240" border="0" /></td>
 </tr>
 </tbody>
 </table>
@@ -345,7 +345,7 @@ To reduce the dimensionality of the problem With iMOD you can fix in many ways t
 <div class="box-note">imode 1ab3.pdb -x -o imodeX</div>
 <p style="text-align: left;" align="center"><a name="FIX_SS"></a>By secondary structure</p>
 <hr />
-<p>With iMOd tou can fix the ICs depending on the secondary structure SS it belongs to. This can be done using the −−ss option followed by a letter identifier (H for helix, E for beta strands and C for others). Note you may fix any combination of SS by adding an identifier as you need; for example, "−S EC" will fix beta and coil. To fix all ICs related to α-helices and β-sheets, just type prompt:</p>
+<p>With iMOd you can fix the ICs depending on the secondary structure SS it belongs to. This can be done using the −−ss option followed by a letter identifier (H for helix, E for beta strands and C for others). Note you may fix any combination of SS by adding an identifier as you need; for example, "−S EC" will fix beta and coil. To fix all ICs related to α-helices and β-sheets, just type prompt:</p>
 <div class="box-note">imode 1ab3.pdb -S HE --save_fixfile -o imodeHE</div>
 <p>By default, the SS is computed internally, but any user can define it own SS through a file and using the −−ss option:</p>
 <div class="box-note">imode 1ab3.pdb -P 2 --func funcTSS.txt --ss 1ab3.ss -o imodeTSSE</div>
@@ -356,26 +356,26 @@ To reduce the dimensionality of the problem With iMOD you can fix in many ways t
 <hr />
 <p>Finally, you can fix any domain/s or region/s of your macromolecular structure. Any IC set can be considered fixed using the −f option with a mask file as;</p>
 <div class="box-note">imode 1aon.pdb -f imodeFIX.fix -o imodeFIXED</div>
-<p>where the mask file <b>imodeFIX.fix</b> is an ASCII file with four columns. The first column is the residue index (begining with 0), and the rest represents the φ, ψ and χ dihedral angles, respectively. In nucleic acid case, the file will have seven columns instead of four,  to account for the (six) α, β, γ, ε, ζ and χ dihedral angles.</p>
+<p>where the mask file <b>imodeFIX.fix</b> is an ASCII file with four columns. The first column is the residue index (beginning with 0), and the rest represents the φ, ψ and χ dihedral angles, respectively. In the nucleic acid case, the file will have seven columns instead of four,  to account for the (six) α, β, γ, ε, ζ and χ dihedral angles.</p>
 <p>A dummy mask (fully mobile) can be obtained using the −−save_fixfile option in iMODE program.</p>
 <div class="box-note">imode 1aon.pdb --save_fixfile -o imodeFIX</div>
 <p>such mask looks like:</p>
 <pre>0 0 0 1<br />1 1 0 1<br />.........<br />276 1 0 1<br />277 0 0 1<br />278 1 0 1<br />.........<br />522 1 0 1<br />523 0 0 1</pre>
-<p>To customize just change "1" by "0" for fixing ICs, save it, and use with imode with −f option to load it and restric the NMA only with the non-fixed ICs as variables.</p>
-<p>The extra zeros at some lines account for residues lacking corresponding ICs, i.e. Glycines and Alanines (no χ), and Prolines (no φ and χ). Note that the −x option must be added on previous commands if you plan to keep mobile some χ dihedral angles. If the macromolecule had several chains, six inter-chain rotational/translational ICs are added: three x, y and z translations and three rotations around x, y and z axis, respectively. For example, if there is a new chain after residue 187 (index 186) the mask file will be:</p>
+<p>To customize just change "1" by "0" for fixing ICs, save it, and use with imode with −f option to load it and restrict the NMA only with the non-fixed ICs as variables.</p>
+<p>The extra zeros at some lines account for residues lacking corresponding ICs, i.e. Glycines and Alanines (no χ), and Prolines (no φ and χ). Note that the −x option must be added on previous commands if you plan to keep mobile some χ dihedral angles. If the macromolecule had several chains, six inter-chain rotational/translational ICs are added: three x, y, and z translations and three rotations around x, y and z axis, respectively. For example, if there is a new chain after residue 187 (index 186) the mask file will be:</p>
 <pre>.........<br />186 1 0 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1 0 1<br />.........</pre>
 </div>
-<h1 class="uk-accordion-title"><strong> Be free to include protein, DNA, RNA and rigid ligands </strong>altogether</h1>
+<h1 class="uk-accordion-title"><strong> Be free to include protein, DNA, RNA, and rigid ligands </strong>altogether</h1>
 <div class="uk-accordion-content">Any domain/s in our macromolecule can be fixed using the −f option. This way both dimensionality will be reduced and undesired distortions will be avoided. For illustrative purposes, we will fix two GroEL domains.
 <p>GroEL is composed of three domains: apical (top red), intermediate (cyan), and equatorial (bottom red). The apical domain interacts with folding intermediates and GroES, the equatorial domain hydrolyzes ATP, and the intermediate domain is flexible and connects these apical and equatorial domains.</p>
 <table style="width: 400px;" border="0" cellspacing="2" cellpadding="0" align="center">
 <tbody>
 <tr>
-<td><a href="images/sbg/imodfit/1aonCartFIX_640.jpg"><img src="images/sbg/imodfit/1aonCartFIX_320.jpg" /></a></td>
+<td><a href="assets/1aonCartFIX_640.jpg"><img src="assets/1aonCartFIX_320.jpg" /></a></td>
 </tr>
 </tbody>
 </table>
-<p>To obtain a successful fitting the structure should be maintained as flexibile as possible, i.e. if we fix very much the structure will be very rigid and the target conformation will not be addressed. To this end the apical and equatorial domains will be fixed while keeping the intermediate domain fully flexible. In the mask file <b><a href="media/files/imodfitDOM.fix">imodfitDOM.fix</a></b> only the ICs belonging to regions of the intermediate domain are keept mobile: 136-193 and 331-409 (indexed from 1 to 524). Further information about the mask file generation is provided in Q1 within this FAQ.</p>
+<p>To obtain a successful fitting the structure should be maintained as flexibile as possible, i.e. if we fix very much the structure will be very rigid and the target conformation will not be addressed. To this end the apical and equatorial domains will be fixed while keeping the intermediate domain fully flexible. In the mask file <b><a href="media/files/imodfitDOM.fix">imodfitDOM.fix</a></b> only the ICs belonging to regions of the intermediate domain are kept mobile: 136-193 and 331-409 (indexed from 1 to 524). Further information about the mask file generation is provided in Q1 within this FAQ.</p>
 <div class="&quot;box-content">imodfit 1aon.pdb 1oel.ccp4 10 0 -i 50000 -t -f imodfitDOM.fix -o imodfitDOM</div>
 <p>The output is the following:</p>
 <pre>imodfit&gt;
@@ -418,9 +418,9 @@ imodfit&gt;
 imodfit&gt; Success! Time elapsed 00h. 16' 18''
 imodfit&gt; Bye!
 </pre>
-<p>The solution is only 3.77 Å Cα RMSD from the target structure used to simulate the map. This is a good result for a structure with 75% of its ICs fixed. Note that, to obtain a good result with such a fixed structure, the number of iterations was increased (-i 50000). If you increase the number of iterations even more you will reach lower RMSD.</p>
-<p>You can play interactively the trajectory movie in <a style="background-color: #dbe5f8;" title="Click here to view in Jmol" href="http://chaconlab.org/"><img src="images/sbg/jmol_icon.bmp" height="14" border="0" /> Jmol</a>, check the fitted structure <a style="background-color: #dbe5f8;" title="Click here to view in Jmol" href="http://chaconlab.org/"><img src="images/sbg/jmol_icon.bmp" height="14" border="0" /> <b>imodfitDOM_fitted.pdb</b></a> and watch the flash movie below. For illustrative purposes the fixed domains were colored in red.</p>
+<p>The solution is only 3.77 Å Cα RMSD from the target structure used to simulate the map. This is a good result for a structure with 75% of its ICs fixed. Note that, to obtain a good result with such a fixed structure, the number of iterations was increased (-i 50000). If you increase the number of iterations even more you will reach a lower RMSD.</p>
+<p>You can play interactively the trajectory movie in <a style="background-color: #dbe5f8;" title="Click here to view in Jmol" href="http://chaconlab.org/"><img src="images/sbg/jmol_icon.bmp" height="14" border="0" /> Jmol</a>, check the fitted structure <a style="background-color: #dbe5f8;" title="Click here to view in Jmol" href="http://chaconlab.org/"><img src="images/sbg/jmol_icon.bmp" height="14" border="0" /> <b>imodfitDOM_fitted.pdb</b></a> and watch the flash movie below. For illustrative purposes, the fixed domains were colored in red.</p>
 <div style="text-align: center;"><video controls="controls" width="320" height="259">
-  <source src="images/video/imod/1aoncartfix..mp4" type="video/mp4" />
+  <source src="https://chaconlab.org/video/imod/1aoncartfix.mp4" type="video/mp4" />
   Your browser does not support HTML5 video.
   </video></div>
