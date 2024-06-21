@@ -1,19 +1,20 @@
 ### How are defined Coarse Grained (CG) levels?
 
 The coarse-graining model representation determines both the system mass distribution and the springs network. The available Coarse-Graining models for <b>proteins</b> are listed below:
-<table width="480px" border="0" cellspacing="4" cellpadding="2">
+
+<table bgcolor="#f00000"border="2" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
-<td width="30%" bgcolor="#f0f0f0"><b>Cα</b> (−m 0)<br/><br/>Only Cα atoms accounting for whole residue mase are considered. This CG model has two extra atoms per chain, one N atom at the beginning and one C atom at the end.</td>
-<td width="30%"><img src="assets/CA_modelR_320.jpg" width="240" border="0" /></td>
+<td width="252px"><img src="assets/CA_modelR_320.jpg" width="240" border="0" /></td>
+<td width="300px" bgcolor="#f0f0f0"><b>Cα</b> (−m 0)<br /><br />Only Cα atoms accounting for whole residue mase are considered. This CG model has two extra atoms per chain, one N atom at the beginning and one C atom at the end.</td>
 </tr>
 <tr>
-<td width="30%" bgcolor="#f0f0f0"><b>3BB2R</b> (−m 1)<br /><br />There are five atoms per residue. Three represent the backbone: N, Cα and carbonylic C; and two represent the side chains: Cβ and a pseudo-atom (R) placed on the center of mass of the remaining side chain atoms. Note that Glycine and Alanine will be modeled by 3 and 4 atoms, respectively.</td>
-<td width="30%"><img src="assets/3BB2R_modelR_320.jpg" width="240" border="0" /></td>
+<td width="252px"><img src="assets/3BB2R_modelR_320.jpg" width="240" border="0" /></td>
+<td width="300px"  bgcolor="#f0f0f0"><b>3BB2R</b> (−m 1)<br /><br />There are five atoms per residue. Three represent the backbone: N, Cα and carbonylic C; and two represent the side chains: Cβ and a pseudo-atom (R) placed on the center of mass of the remaining side chain atoms. Note that Glycine and Alanine will be modeled by 3 and 4 atoms,respectively.</td>
 </tr>
 <tr>
-<td width="30%" bgcolor="#f0f0f0"><b>Full-atom</b> (−m 2, <i><b>default</b></i>)<br /><br />All heavy atoms are considered, each one accounting for its mass.</td>
-<td width="30%"><img src="assets/Fullatom_modelR_320.jpg" width="240" border="0" /></td>
+<td width="252px" ><img src="assets/Fullatom_modelR_320.jpg" width="240" border="0" /></td>
+<td width="300px"  bgcolor="#f0f0f0"><b>Full-atom</b> (−m 2, <i><b>default</b></i>)<br /><br />All heavy atoms are considered, each one accounting for its mass.</td>
 </tr>
 </tbody>
 </table>
