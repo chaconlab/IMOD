@@ -308,7 +308,7 @@ This way, only 6666 ICs were considered. Below you can check 5th and 18th normal
   <source src="https://chaconlab.org/images/video/imod/1cwpDH09_18.mp4" type="video/mp4" />
   Your browser does not support HTML5 video.
   </video></td>
-<td><img src="asserts/1cwpDH09_18_arrows_320.jpg" width="320" /></td>
+<td><img src="assets/1cwpDH09_18_arrows_320.jpg" width="320" /></td>
 </tr>
 </tbody>
 </table>
