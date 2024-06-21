@@ -18,8 +18,7 @@ The coarse-graining model representation determines both the system mass distrib
 </tbody>
 </table>
 
-
-Next figures illustrate the appearance of the Cα and 3BB2R CG models:</div>
+The next figures illustrate the appearance of the Cα and 3BB2R CG models:
 
 <table class="text" style="width: 480px;" border="0" cellspacing="4" cellpadding="2">
 <tbody>
@@ -33,7 +32,7 @@ Next figures illustrate the appearance of the Cα and 3BB2R CG models:</div>
 </tr>
 </tbody>
 </table>
-On the left model only Cα atoms (yellow) are considered. On the right, the 3BB2R model (right) have five atoms per residue: three representing the backbone (N, Cα and carbonylic C, in blue, yellow and cyan, respectively), and two representing the side chains (Cβ and a pseudo-atom placed on the center of mass of the remaining side chain, in cyan and red, respectively). 
+On the left model, only Cα atoms (yellow) are considered. On the right, the 3BB2R model (right) has five atoms per residue: three representing the backbone (N, Cα and carbonylic C, in blue, yellow and cyan, respectively), and two representing the side chains (Cβ and a pseudo-atom placed on the center of mass of the remaining side chain, in cyan and red, respectively). 
 At this moment, only the Full-atom representation is available for <b>nucleic acids</b>:</div>
 
 <table class="text" style="width: 480px;" border="0" cellspacing="4" cellpadding="2">
@@ -54,20 +53,25 @@ At this moment, only the Full-atom representation is available for <b>nucleic ac
 </tbody>
 </table>
 
-### How to use CG models?
+To choose the desired CG model -m option must be added to the basic command followed by the model identifier. The basename option (-o) will be used to avoid overwriting previous results.
+```
+[Ca]   > imode 1ab3.pdb -m 0 -o imodeCA
+[3BB2R]> imode 1ab3.pdb -m 1 -o imode3BB2R
+```
+<p>In <b>Ca</b> case, an extra file is produced: <b>imodeCA_ncac.pdb</b>. This PDB file is just a standard PDB containing the coordinates of backbone nitrogen (N), alpha (Ca), and carbonylic carbons (C), i.e. those atoms needed to define the f and ? dihedral angles. This is the <b>minimum required structure to use our Ca model</b>. A structure with only Ca atoms will not work. In this case, external software to generate backbone N and C atoms is mandatory.
+  
+To animate these modes, the CG model introduced to iMOVE should be the same one used in iMODE:
+```
+[Ca]   > imove imodeCA_ncac.pdb imodeCA_ic.evec imoveCA_1.pdb 1 -m 0 -a 0.4
+[3BB2R]> imove 1ab3.pdb imode3BB2R_ic.evec imove3BB2R_1.pdb 1 -m 1
+```
+In Ca case there are fewer springs than in full-atom. Thus, the amplitude was lowered (-a 0.4). In 3BB2R case, it is not necessary such modification since the number of springs is similar to full-atom.Its convenient to convert CG models to a full atom representation to avoid problems of compatibility with visualization software:
+```
+[Ca]   >  imove 1ab3.pdb imodeCA_ic.evec imoveCA_FULL_1.pdb 1 -m 0 -a 0.4 --model_out 2
+[3BB2R]>  imove 1ab3.pdb imode3BB2R_ic.evec imove3BB2R_FULL_1.pdb 1 -m 1 --model_out 2
+```
+An extra output file named <b>&lt;basename&gt;_icf.evec</b> will contain the output modes of the corresponding CG level.</p>
 
-To choose the desired CG model -m option must be added to the basic command followed by model identifier. The basename option (-o) will be used to avoid overwriting of previous re.</p>
-<div class="box-note">Ca       -&gt; imode 1ab3.pdb -m 0 -o imodeCA <br /> 3BB2R-&gt; imode 1ab3.pdb -m 1 -o imode3BB2R</div>
-<p>You can check the CG models using Jmol: <a style="background-color: #dbe5f8;" title="Click here to view in Jmol" href="http://chaconlab.org/"> <img src="images/sbg/jmol_icon.bmp" height="14" border="0" /> Ca model</a> and <a style="background-color: #dbe5f8;" title="Click here to view in Jmol" href="http://chaconlab.org/"> <img src="images/sbg/jmol_icon.bmp" height="14" border="0" /> 3BB2R model</a>.</p>
-<p>In <b>Ca</b> case, an extra file is produced: <b>imodeCA_ncac.pdb</b>. This PDB file is just a standard PDB containing the coordinates of backbone nitrogen (N), and alpha (Ca) and carbonylic carbons (C), i.e. those atoms needed to define the f and ? dihedral angles. This is the <b>minimum required structure to use our Ca model</b>. A structure with only Ca atoms will not work. In this case, external software to generate backbone N and C atoms is mandatory. For example, you can use the online server: <a href="http://bioserv.rpbs.univ-paris-diderot.fr/cgi-bin/SABBAC">SABBAC</a>.</p>
-<p>To animate these modes, the CG model introduced to iMOVE should be the same used in iMODE:</p>
-<div class="box-note">Ca       -&gt; imove imodeCA_ncac.pdb imodeCA_ic.evec imoveCA_1.pdb 1 -m 0 -a 0.4<br /> 3BB2R-&gt; imove 1ab3.pdb imode3BB2R_ic.evec imove3BB2R_1.pdb 1 -m 1</div>
-<p>In Ca case there are less springs than in full-atom. Thus, the amplitude was lowered (-a 0.4). In 3BB2R case, it is not necessary such modification since the number of springs is similar to full-atom.</p>
-<p>Its convenient to convert CG models to a full atom representation to avoid problems of compatibility with visualization software:</p>
-<div class="box-note">Ca       -&gt;<br /> imove 1ab3.pdb imodeCA_ic.evec imoveCA_FULL_1.pdb 1 -m 0 -a 0.4 --model_out 2 <br /> 3BB2R-&gt;<br /> imove 1ab3.pdb imode3BB2R_ic.evec imove3BB2R_FULL_1.pdb 1 -m 1 --model_out 2</div>
-
-<p>An extra output file named <b>&lt;basename&gt;_icf.evec</b> will contain the output modes of the corresponding CG level.</p>
-</div>
 
 ### How to customize the potential energy model?
 
@@ -116,8 +120,10 @@ For a given structure and CG model, normal modes are determined by its potential
 #### Topology and Secondary Structure
 
 iMODE permits customized inverse exponential functions according to both topology and SS. The basic command for topology and SS would be:</p>
-<div class="box-note">imode 1ab3.pdb -P 2 --func funcTSS.txt -o imodeTSS</div>
-<p>A functions file (<a href="media/files/funcTSS.txt">funcTSS.txt</a>) is mandatory. It should conform the following format:<br />(Note, "#"-begining lines will be omitted)</p>
+```
+>imode 1ab3.pdb -P 2 --func funcTSS.txt -o imodeTSS
+```
+The file (<a href="media/files/funcTSS.txt">funcTSS.txt</a>) is mandatory with the following format:<br />(Note, "#"-begining lines will be omitted)</p>
 <pre># SS  n  k  x0 p
 HH    0  2 3.8 6
 HH    1  5 3.8 6
@@ -131,16 +137,22 @@ XX   -1  1 3.8 6
 </pre>
 <p>Each line represents an inverse exponential function. The first column specifies the SS. For example, "HH" indicates that both atoms should belong to residues with a-helix SS. By default, SS identifiers are: "H" helix, "E" strand, and "C" coil; and any pair of them is allowed. The second column specifies the topology. Here topology represents the sequential distance between two residues; for example, if our protein sequence were ...A<span style="text-decoration: underline;">G</span>KT<span style="text-decoration: underline;">L</span>V..., the topology between underlined residues would be 3. The remaining columns define the inverse exponential functional parameters: k, x0 and p, (see the table above).</p>
 <p>The wildcards for SS and topology are "XX" and "-1", respectively.</p>
-<p>By default, the SS is computed internally, but any user defined SS can be provided using the --ss option:</p>
-<div class="box-note">imode 1ab3.pdb -P 2 --func funcTSS.txt --ss 1ab3.ss -o imodeTSSE</div>
-<p>For example, you can use DSSP to compute SS (<a href="files/1ab3.dssp">1ab3.dssp</a>) and with the aid of <a href="files/dssp2ss.pl">this</a> simple Perl script you can convert it into our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>)</p>
-<div class="box-note">perl dssp2ss.pl 1ab3.dssp 1ab3.ss</div>
-<p>Our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>) is a simple two column ASCII file. The first column corresponds to the sequence index, and the second one to a single-character SS identifier.  </p>
+By default, the SS is computed internally, but any user-defined SS can be provided using the --ss option:
+```
+>imode 1ab3.pdb -P 2 --func funcTSS.txt --ss 1ab3.ss -o imodeTSSE
+```
+For example, you can use DSSP to compute SS (<a href="files/1ab3.dssp">1ab3.dssp</a>) and with the aid of <a href="files/dssp2ss.pl">this</a> simple Perl script you can convert it into our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>)
+```
+>perl dssp2ss.pl 1ab3.dssp 1ab3.ss
+```
+Our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>) is a simple two-column ASCII file. The first column corresponds to the sequence index, and the second to a single-character SS identifier.  <
 
 #### Customize potential energy by topology only
 
-<p>The basic command for topology is:</p>
-<div class="box-note">imode 1ab3.pdb -P 2 --func funcTOP.txt -o imodeTOP</div>
+<p>The basic command for topology is:
+```
+>imode 1ab3.pdb -P 2 --func funcTOP.txt -o imodeTOP</div>
+```
 <p>The topology functions file (<a href="media/files/funcTOP.txt">funcTOP.txt</a>) is:</p>
 <pre># SS  n  k  x0 p
 XX    0  2 3.8 6
@@ -150,9 +162,13 @@ XX    3  3 3.8 6
 XX    4  2 3.8 6
 XX   -1  1 3.8 6
 </pre>
-<p align="left"><a name="P_SS"></a>Customize potential energy by SS only.</p>
-<p>The command to take into account SS only would look like this way:</p>
-<div class="box-note">imode 1ab3.pdb -P 2 --func funcHE.txt -o imodeHE</div>
+
+#### Customize potential energy by SS only
+
+The command to take into account SS is:
+```
+>imode 1ab3.pdb -P 2 --func funcHE.txt -o imodeHE
+```
 <p>The functions file (<a href="media/files/funcHE.txt">funcHE.txt</a>) is:</p>
 <pre># SS (j-i) k  x0 p
 HH     -1  2 3.8 6
@@ -161,9 +177,11 @@ HE     -1  3 3.8 6
 XX     -1  1 3.8 6
 </pre>
 <p>This file applies different functions to atom pairs belonging to residues with SS: H vs. H (HH), E vs. E (EE) and H vs. E (HE). The XX function will be applied to the remaining pairs of atoms.</p>
-<p>Given the non-Helical or non-Sheet regions are more flexible than the rest, sometimes may be interesting to increase flexibility in those regions. The corresponding command would be:</p>
-<div class="box-note">imode 1ab3.pdb -P 2 --func funcCX.txt -o imodeCX</div>
-<p>The functions file (<a href="media/files/funcCX.txt">funcCX.txt</a>) is:</p>
+<Given the non-Helical or non-Sheet regions are more flexible than the rest, it could be handy to increase flexibility in those regions using: 
+```
+>imode 1ab3.pdb -P 2 --func funcCX.txt -o imodeCX
+```
+The functions file (<a href="media/files/funcCX.txt">funcCX.txt</a>) is:</p>
 <pre># SS (j-i)   k  x0 p
 CC     -1  0.2 3.8 6
 XX     -1    1 3.8 6
@@ -179,8 +197,10 @@ XX     -1    1 3.8 6
 
 #### User custom potential
 
-<p>The user can define its potential through a file using the -K option. Type at the command prompt:</p>
-<div class="box-note">imode 1ab3.pdb -K imodeKi_Kfile.dat -o imodeCP</div>
+The user can define its potential through a file using the -K option;
+```
+>imode 1ab3.pdb -K imodeKi_Kfile.dat -o imodeCP
+```
 <p>This ASCII file (<a href="media/files/imodeKi_Kfile.dat">imodeKi_Kfile.dat</a>) has three columns to define the force constants (K) for each atomic pair:</p>
 <pre>1 2 9.962940E-01
 1 3 9.292819E-01
@@ -190,11 +210,13 @@ XX     -1    1 3.8 6
 ...........
 </pre>
 <p>Each line represents one spring. The first and second colums are the atomic indices (begining with 1), and the third is the force constant.</p>
-<p>To obtain a Kfile template for your macromolecule that you can adapt to your convenience, use:</p>
-<div class="box-note">imode 1ab3.pdb -P 1 --k1_c 10 --save_Kfile -o imodeKc</div>
-<p>The resulting file, <b><a href="media/files/imodeKc_Kfile.dat">imodeKc_Kfile.dat</a></b>, will contain the force constants for current potential energy model, in this case, the simple cutoff model.</p>
+<p>To obtain a Kfile template for your macromolecule that you can adapt to your convenience, use:
+```
+>imode 1ab3.pdb -P 1 --k1_c 10 --save_Kfile -o imodeKc
+```
+The resulting file, <b><a href="media/files/imodeKc_Kfile.dat">imodeKc_Kfile.dat</a></b>, will contain the force constants for current potential energy model, in this case, the simple cutoff model.</p>
 
-### How to deal with huge systems?
+### Dealing with huge systems?
 
 In iMOD, the maximum macromolecular size allowed to perform NMA is constrained by the amount of memory needed to diagonalize the Hessian matrix, and it depends on the employed architecture. For example, in a standard 32-bit linux box (the maximum memory addressed per program is about 2Gb), it can solve systems up to approximately 15000 degrees of freedom (DoF), i.e. about 7000-8000 amino acids in proteins or 3000 nucleotides in nucleic acids. On the other hand, 64-bit machines are only limited by available RAM. For example, NMA of a 50000 DoFs system would need a 64-bit computer with about 30Gb of RAM. Therefore a dimensionality reduction is mandatory when the system under study becomes huge for standard computers. To this end, we can fix some internal coordinates (ICs)  to reduce the degrees of freedom and fit the matrices into memory. There are three ways to accomplish this:
 <ul>
@@ -202,8 +224,10 @@ In iMOD, the maximum macromolecular size allowed to perform NMA is constrained 
 <li>Fixing by secondary structure</li>
 <li>Fixing ICs randomly.</li>
 </ul>
-Here we are commenting on the simplest way to reduce the dimensionality, which is to fix randomly some ratio of dihedral angles. Other possibilities for fixing IC will be discussed in the next section.  <a name="FAQ_R"></a><b>Fixing ICs randomly</b> For fixing randomly some ratio of dihedral angles, just type:
-<div class="box-note" style="text-align: justify;">imode 1aon.pdb -r 0.5 -o imodeR05</div>
+The simplest way to reduce the dimensionality is <b> fixing ICs randomly</b>some ratio of dihedral angles:
+```
+>imode 1aon.pdb -r 0.5 -o imodeR05
+```
 This will fix the 50% of available dihedral angles. Note the inter-chain rotational/translational degrees of freedom are always maintained mobile. To illustrate this reductionist approach we propose the following practical examples with a HUGE viral system:
 <ul>
 <li><a href="#FAQ_CCMV_NMA">NMA of the closed CCMV capsid</a></li>
@@ -312,8 +336,9 @@ To reduce the dimensionality of the problem With iMOD you can fix in many ways t
 <li><a href="#FIX_SS">By Secondary Structure.</a></li>
 <li><a href="#FIX_IC">Customized  IC subset.</a></li>
 </ul>
-<p style="text-align: left;" align="center"><a name="FIX_X"></a>Un-fix any χ dihedral angle</p>
-<hr />
+
+#### Un-fix any χ dihedral angle
+
 <p>Our Internal Coordinates are φ, ψ and χ dihedral angles for proteins, and α, β, γ, ε, ζ and χ for nucleic acids (see figure below). Another six additional rotational/translational degrees of freedom are added every extra chain</p>
 <table class="text" style="width: 480px;" border="0" cellspacing="4" cellpadding="2">
 <tbody>
@@ -327,27 +352,41 @@ To reduce the dimensionality of the problem With iMOD you can fix in many ways t
 </tr>
 </tbody>
 </table>
-<p>By default we consider all but χ. The removal of these angles does not affect the low energy modes and will reduce the problem dimensionality by around 1/2 in proteins and 1/5 in nucleic acids.</p>
-<div class="box-note">imode 1ab3.pdb -x -o imodeX</div>
-<p style="text-align: left;" align="center"><a name="FIX_SS"></a>By secondary structure</p>
-<hr />
-<p>With iMOd you can fix the ICs depending on the secondary structure SS it belongs to. This can be done using the −−ss option followed by a letter identifier (H for helix, E for beta strands and C for others). Note you may fix any combination of SS by adding an identifier as you need; for example, "−S EC" will fix beta and coil. To fix all ICs related to α-helices and β-sheets, just type prompt:</p>
-<div class="box-note">imode 1ab3.pdb -S HE --save_fixfile -o imodeHE</div>
-<p>By default, the SS is computed internally, but any user can define it own SS through a file and using the −−ss option:</p>
-<div class="box-note">imode 1ab3.pdb -P 2 --func funcTSS.txt --ss 1ab3.ss -o imodeTSSE</div>
-<p>For example, you can use DSSP to compute SS (<a href="files/1ab3.dssp">1ab3.dssp</a>) and with the aid of <a href="files/dssp2ss.pl">this</a> simple Perl script you can convert it into our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>)</p>
-<div class="box-note">perl dssp2ss.pl 1ab3.dssp 1ab3.ss</div>
-<p>Our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>) is a simple two column ASCII file. The first column corresponds to the sequence index, and the second one to a single-character SS identifier.  </p>
-<p style="text-align: left;"><a name="FAQ_IC"></a><b>Fixing custom ICs</b></p>
-<hr />
-<p>Finally, you can fix any domain/s or region/s of your macromolecular structure. Any IC set can be considered fixed using the −f option with a mask file as;</p>
-<div class="box-note">imode 1aon.pdb -f imodeFIX.fix -o imodeFIXED</div>
-<p>where the mask file <b>imodeFIX.fix</b> is an ASCII file with four columns. The first column is the residue index (beginning with 0), and the rest represents the φ, ψ and χ dihedral angles, respectively. In the nucleic acid case, the file will have seven columns instead of four,  to account for the (six) α, β, γ, ε, ζ and χ dihedral angles.</p>
-<p>A dummy mask (fully mobile) can be obtained using the −−save_fixfile option in iMODE program.</p>
-<div class="box-note">imode 1aon.pdb --save_fixfile -o imodeFIX</div>
-<p>such mask looks like:</p>
+<p>By default we consider all but χ. The removal of these angles does not affect the low energy modes and will reduce the problem dimensionality by around 1/2 in proteins and 1/5 in nucleic acids.
+```  
+>imode 1ab3.pdb -x -o imodeX
+```
+  
+#### By secondary structure
+  
+<p>With iMOd you can fix the ICs depending on the secondary structure SS it belongs to. This can be done using the −−ss option followed by a letter identifier (H for helix, E for beta strands and C for others). Note you may fix any combination of SS by adding an identifier as you need; for example, "−S EC" will fix beta and coil. To fix all ICs related to α-helices and β-sheets, just type prompt:
+```
+>imode 1ab3.pdb -S HE --save_fixfile -o imodeHE</div>
+```
+By default, the SS is computed internally, but any user can define it own SS through a file and using the −−ss option:
+```
+>imode 1ab3.pdb -P 2 --func funcTSS.txt --ss 1ab3.ss -o imodeTSSE
+```
+For example, you can use DSSP to compute SS (<a href="files/1ab3.dssp">1ab3.dssp</a>) and with the aid of <a href="files/dssp2ss.pl">this</a> simple Perl script you can convert it into our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>)
+```
+>perl dssp2ss.pl 1ab3.dssp 1ab3.ss
+```
+Our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>) is a simple two-column ASCII file. The first column corresponds to the sequence index and the second to a single-character SS identifier.  
+
+#### Fixing custom ICs by a mask</b></p>
+
+Finally, you can fix any domain/s or region/s of your macromolecular structure using the −f option with a mask file as:
+```
+imode 1aon.pdb -f imodeFIX.fix -o imodeFIXED
+```
+where the mask file <b>imodeFIX.fix</b> is an ASCII file with four columns. The first column is the residue index (beginning with 0), and the rest represents the φ, ψ and χ dihedral angles, respectively. In the nucleic acid case, the file will have seven columns instead of four,  to account for the (six) α, β, γ, ε, ζ and χ dihedral angles.</p>
+<p>A dummy mask (fully mobile) can be obtained using the −−save_fixfile option in iMODE program.
+```  
+>imode 1aon.pdb --save_fixfile -o imodeFIX</div>
+```
+such mask file looks like
 <pre>0 0 0 1<br />1 1 0 1<br />.........<br />276 1 0 1<br />277 0 0 1<br />278 1 0 1<br />.........<br />522 1 0 1<br />523 0 0 1</pre>
-<p>To customize just change "1" by "0" for fixing ICs, save it, and use with imode with −f option to load it and restrict the NMA only with the non-fixed ICs as variables.</p>
+To customize just change "1" by "0" for fixing ICs, save it, and use it with imode (−f option) to restrict the NMA only with the non-fixed ICs  variables.
 <p>The extra zeros at some lines account for residues lacking corresponding ICs, i.e. Glycines and Alanines (no χ), and Prolines (no φ and χ). Note that the −x option must be added on previous commands if you plan to keep mobile some χ dihedral angles. If the macromolecule had several chains, six inter-chain rotational/translational ICs are added: three x, y, and z translations and three rotations around x, y and z axis, respectively. For example, if there is a new chain after residue 187 (index 186) the mask file will be:</p>
 <pre>.........<br />186 1 0 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1 0 1<br />.........</pre>
 
