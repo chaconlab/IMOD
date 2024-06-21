@@ -112,9 +112,10 @@ For a given structure and CG model, normal modes are determined by its potential
 </table>
 <p>To customize the potential energy functions modify the default options; for example:</p>
 <div class="box-note">imode 1ab3.pdb -m 0 -P 0 --k0_c 8 --k0_k 2 -k0_x0 2.5 -k0_p 4 -o imodeCA_IE2<br /> imode 1ab3.pdb -m 0 -P 1 --k1_c 5 --k1_k 2 -o imodeCA_C2</div>
-<p align="center"><a name="P_TSS"></a> Topology and Secondary Structure</p>
-<p>iMODE permits the specification of customized inverse exponential functions according to both topology and SS.</p>
-<p>The basic command for topology and SS would be:</p>
+
+#### Topology and Secondary Structure
+
+iMODE permits customized inverse exponential functions according to both topology and SS. The basic command for topology and SS would be:</p>
 <div class="box-note">imode 1ab3.pdb -P 2 --func funcTSS.txt -o imodeTSS</div>
 <p>A functions file (<a href="media/files/funcTSS.txt">funcTSS.txt</a>) is mandatory. It should conform the following format:<br />(Note, "#"-begining lines will be omitted)</p>
 <pre># SS  n  k  x0 p
@@ -128,14 +129,16 @@ EE    2  3 3.8 6
 EE   -1  5 3.8 6
 XX   -1  1 3.8 6
 </pre>
-<p>Each line represents an inverse exponential function. First column specifies the SS. For example, "HH" indicates that both atoms should belong to residues with a-helix SS. By default SS identifiers are: "H" helix, "E" strand, and "C" coil; and any pair of them is allowed. Second column specifies the topology. Here topology represents the sequential distance between two residues; for example, if our protein sequence were ...A<span style="text-decoration: underline;">G</span>KT<span style="text-decoration: underline;">L</span>V..., the topology between underlined residues would be 3. Remaining columns define the inverse exponential functional parameters: k, x0 and p, (see the table above).</p>
+<p>Each line represents an inverse exponential function. The first column specifies the SS. For example, "HH" indicates that both atoms should belong to residues with a-helix SS. By default, SS identifiers are: "H" helix, "E" strand, and "C" coil; and any pair of them is allowed. The second column specifies the topology. Here topology represents the sequential distance between two residues; for example, if our protein sequence were ...A<span style="text-decoration: underline;">G</span>KT<span style="text-decoration: underline;">L</span>V..., the topology between underlined residues would be 3. The remaining columns define the inverse exponential functional parameters: k, x0 and p, (see the table above).</p>
 <p>The wildcards for SS and topology are "XX" and "-1", respectively.</p>
 <p>By default, the SS is computed internally, but any user defined SS can be provided using the --ss option:</p>
 <div class="box-note">imode 1ab3.pdb -P 2 --func funcTSS.txt --ss 1ab3.ss -o imodeTSSE</div>
 <p>For example, you can use DSSP to compute SS (<a href="files/1ab3.dssp">1ab3.dssp</a>) and with the aid of <a href="files/dssp2ss.pl">this</a> simple Perl script you can convert it into our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>)</p>
 <div class="box-note">perl dssp2ss.pl 1ab3.dssp 1ab3.ss</div>
 <p>Our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>) is a simple two column ASCII file. The first column corresponds to the sequence index, and the second one to a single-character SS identifier.  </p>
-<p align="left"><a name="P_TOP"></a>Customize potential energy by topology only.</p>
+
+#### Customize potential energy by topology only
+
 <p>The basic command for topology is:</p>
 <div class="box-note">imode 1ab3.pdb -P 2 --func funcTOP.txt -o imodeTOP</div>
 <p>The topology functions file (<a href="media/files/funcTOP.txt">funcTOP.txt</a>) is:</p>
@@ -169,11 +172,13 @@ XX     -1    1 3.8 6
 <table class="text" style="width: 670px;" border="0" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
-<td align="center"><img style="border: 0;" src="images/sbg/imod/1ab3CAkCCXX_320.jpg" width="320" border="0" /></td>
+<td align="center"><img style="border: 0;" src="assets/1ab3CAkCCXX_320.jpg" width="320" border="0" /></td>
 </tr>
 </tbody>
 </table>
-<p align="center"><a name="P_K"></a>--------------- User custom potential. ---------------</p>
+
+#### User custom potential
+
 <p>The user can define its potential through a file using the -K option. Type at the command prompt:</p>
 <div class="box-note">imode 1ab3.pdb -K imodeKi_Kfile.dat -o imodeCP</div>
 <p>This ASCII file (<a href="media/files/imodeKi_Kfile.dat">imodeKi_Kfile.dat</a>) has three columns to define the force constants (K) for each atomic pair:</p>
@@ -269,21 +274,21 @@ This way, only 6666 ICs were considered. Below you can check 5th and 18th normal
 <tbody>
 <tr>
 <td><video controls="controls" width="320" height="259">
-  <source src="images/video/imod/1cwpDH09_5.mp4" type="video/mp4" />
+  <source src="https://chaconlab.org/images/video/imod/1cwpDH09_5.mp4" type="video/mp4" />
   Your browser does not support HTML5 video.
   </video></td>
 <td><img src="assets/1cwpDH09_5_arrows_320.jpg" width="320" /></td>
 </tr>
 <tr>
 <td><video controls="controls" width="320" height="259">
-  <source src="images/video/imod/1cwpDH09_18.mp4" type="video/mp4" />
+  <source src="https://chaconlab.org/images/video/imod/1cwpDH09_18.mp4" type="video/mp4" />
   Your browser does not support HTML5 video.
   </video></td>
 <td><img src="asserts/1cwpDH09_18_arrows_320.jpg" width="320" /></td>
 </tr>
 </tbody>
 </table>
-<a name="FAQ_CCMV_MORPH"></a>Morphing the Closed CCMV capsid into the swollen form To illustrate iMORPH's performance on a huge system we are going to compute a feasible trajectory from the <a href="media/files/1cwp_prot.pdb.gz">closed</a> into the <a href="media/files/ccmv_swln_1_full.vdb.gz">swollen</a> structure. This "swelling", represents a huge concerted motion about 24.0 Å Ca RMSD where 2nm sized openings appear in the protein shell. Both structures were obtained from <a href="http://viperdb.scripps.edu/"> V IPERdb</a> and are shown below.
+<a name="FAQ_CCMV_MORPH"></a>Morphing the Closed CCMV capsid into the swollen form To illustrate iMORPH's performance on a huge system we are going to compute a feasible trajectory from the <a href="media/files/1cwp_prot.pdb.gz">closed</a> into the <a href="media/files/ccmv_swln_1_full.vdb.gz">swollen</a> structure. This "swelling", represents a huge concerted motion about 24.0 Å Ca RMSD where 2 nm-sized openings appear in the protein shell. Both structures were obtained from <a href="http://viperdb.scripps.edu/"> V IPERdb</a> and are shown below.
 <table border="0" cellspacing="0" cellpadding="0" align="center">
 <tbody>
 <tr>
@@ -294,7 +299,7 @@ This way, only 6666 ICs were considered. Below you can check 5th and 18th normal
 </table>
 As a consequence of both motion and system size we had to carry it out in two steps using some extra options: imorph 1cwp_prot.pdb ccmv_swln_1_full.vdb -i 200000 -r 1 -e 0.05 --morepdbs --nowrmsd -o ccmvmorph<br /> imorph ccmvmorph_fitted.pdb ccmv_swln_1_full.vdb -i 300000 -r 1 -n 0.99999 --morepdbs --prob plain -o ccmvmorph2 In first step we added: -e 0.05 to speed up convergence, --nowrmsd to disable the Weighted-RMSD alingment (which is not suited to huge motions), and --more_pdbs to force saving the fitted structure. Note this fitted structure was still about 5 Å Ca RMSD away from the target. In a second refinement step, we used all available modes (-n 0.99999) with a different mode selection scheme (--prob plain). Since we were closer to the target structure, the --nowrmsd option was removed. Note that to minimize NMA time in both steps only the rotational/translational ICs were considered (-r 1). Now a successful morphing <a href="media/files/ccmvmorph2_fitted.pdb.gz">result</a> is obtained. It's only 0.95 Å Ca RMSD from the target structure. You can check out its beautiful movie below.
 <div style="text-align: center;"><video controls="controls" width="320" height="259">
-  <source src="images/video/imod/ccmvmorph_movie.mp4" type="video/mp4" />
+  <source src="https://chaconlab.org/images/video/imod/ccmvmorph_movie.mp4" type="video/mp4" />
   Your browser does not support HTML5 video.
   </video></div>
   
