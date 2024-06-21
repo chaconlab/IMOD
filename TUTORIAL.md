@@ -1,16 +1,15 @@
 ### How are defined Coarse Grained (CG) levels?
 
 The coarse-graining model representation determines both the system mass distribution and the springs network. The available Coarse-Graining models for <b>proteins</b> are listed below:
-
-<table bgcolor="#f00000"border="2" cellspacing="4" cellpadding="2">
+<table style="background-color: white" border="2" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
 <td width="252px"><img src="assets/CA_modelR_320.jpg" width="240" border="0" /></td>
-<td width="300px" bgcolor="#f0f0f0"><b>Cα</b> (−m 0)<br /><br />Only Cα atoms accounting for whole residue mase are considered. This CG model has two extra atoms per chain, one N atom at the beginning and one C atom at the end.</td>
+<td width="300px" background="#f0f0f0"><b>Cα</b> (−m 0)<br /><br />Only Cα atoms accounting for whole residue mase are considered. This CG model has two extra atoms per chain, one N atom at the beginning and one C atom at the end.</td>
 </tr>
 <tr>
-<td width="252px"><img src="assets/3BB2R_modelR_320.jpg" width="240" border="0" /></td>
-<td width="300px"  bgcolor="#f0f0f0"><b>3BB2R</b> (−m 1)<br /><br />There are five atoms per residue. Three represent the backbone: N, Cα and carbonylic C; and two represent the side chains: Cβ and a pseudo-atom (R) placed on the center of mass of the remaining side chain atoms. Note that Glycine and Alanine will be modeled by 3 and 4 atoms,respectively.</td>
+<td width="252px" bgcolor="white" ><img src="assets/3BB2R_modelR_320.jpg" width="240" border="0" /></td>
+<td width="300px"  background="#f0f0f0"><b>3BB2R</b> (−m 1)<br /><br />There are five atoms per residue. Three represent the backbone: N, Cα and carbonylic C; and two represent the side chains: Cβ and a pseudo-atom (R) placed on the center of mass of the remaining side chain atoms. Note that Glycine and Alanine will be modeled by 3 and 4 atoms,respectively.</td>
 </tr>
 <tr>
 <td width="252px" ><img src="assets/Fullatom_modelR_320.jpg" width="240" border="0" /></td>
@@ -133,7 +132,7 @@ XX   -1  1 3.8 6
 <p>The wildcards for SS and topology are "XX" and "-1", respectively.</p>
 <p>By default, the SS is computed internally, but any user defined SS can be provided using the --ss option:</p>
 <div class="box-note">imode 1ab3.pdb -P 2 --func funcTSS.txt --ss 1ab3.ss -o imodeTSSE</div>
-<p>For example, you can use DSSP to compute SS (<a href="files/1ab3.dssp">1ab3.dssp</a>) and with the aid of <a href="files/dssp2ss.pl">this</a> simple perl script you can convert it into our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>)</p>
+<p>For example, you can use DSSP to compute SS (<a href="files/1ab3.dssp">1ab3.dssp</a>) and with the aid of <a href="files/dssp2ss.pl">this</a> simple Perl script you can convert it into our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>)</p>
 <div class="box-note">perl dssp2ss.pl 1ab3.dssp 1ab3.ss</div>
 <p>Our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>) is a simple two column ASCII file. The first column corresponds to the sequence index, and the second one to a single-character SS identifier.  </p>
 <p align="left"><a name="P_TOP"></a>Customize potential energy by topology only.</p>
@@ -158,7 +157,7 @@ EE     -1  5 3.8 6
 HE     -1  3 3.8 6
 XX     -1  1 3.8 6
 </pre>
-<p>This file applies different functions to atom pairs belonging to residues with SS: H vs. H (HH), E vs. E (EE) and H vs. E (HE). The XX function will be applied to remaining pairs of atoms.</p>
+<p>This file applies different functions to atom pairs belonging to residues with SS: H vs. H (HH), E vs. E (EE) and H vs. E (HE). The XX function will be applied to the remaining pairs of atoms.</p>
 <p>Given the non-Helical or non-Sheet regions are more flexible than the rest, sometimes may be interesting to increase flexibility in those regions. The corresponding command would be:</p>
 <div class="box-note">imode 1ab3.pdb -P 2 --func funcCX.txt -o imodeCX</div>
 <p>The functions file (<a href="media/files/funcCX.txt">funcCX.txt</a>) is:</p>
@@ -166,7 +165,7 @@ XX     -1  1 3.8 6
 CC     -1  0.2 3.8 6
 XX     -1    1 3.8 6
 </pre>
-<p>The springs associated to the last example are represented below. First and second function springs are colored in orange and red, respectively. For clarity, both kinds of springs were shown with similar thicknesses.</p>
+<p>The springs associated with the last example are represented below. First and second function springs are colored in orange and red, respectively. For clarity, both kinds of springs were shown with similar thicknesses.</p>
 <table class="text" style="width: 670px;" border="0" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
@@ -175,7 +174,7 @@ XX     -1    1 3.8 6
 </tbody>
 </table>
 <p align="center"><a name="P_K"></a>--------------- User custom potential. ---------------</p>
-<p>The user can define its potential thought a file using the -K option. Type at the command prompt:</p>
+<p>The user can define its potential through a file using the -K option. Type at the command prompt:</p>
 <div class="box-note">imode 1ab3.pdb -K imodeKi_Kfile.dat -o imodeCP</div>
 <p>This ASCII file (<a href="media/files/imodeKi_Kfile.dat">imodeKi_Kfile.dat</a>) has three columns to define the force constants (K) for each atomic pair:</p>
 <pre>1 2 9.962940E-01
@@ -192,20 +191,20 @@ XX     -1    1 3.8 6
 
 ### How to deal with huge systems?
 
-In iMOD, the maximum macromolecular size allowed to perform NMA is constrained by the amount of memory needed to diagonalize the Hessian matrix, and it depends on the employed architecture. For example, in a standard 32-bit linux box (the maximum memory addressed per program is about 2Gb) so it can solve systems up to approximately 15000 degrees of freedom (DoF), i.e. about 7000-8000 amino acids in proteins or 3000 nucleotides in nucleic acids. On the other hand, 64-bit machines are only limited by available RAM. For example, NMA of a 50000 DoFs system would need a 64-bit computer with about 30Gb of RAM memory. Therefore a dimensionality reduction is mandatory when the system under study becomes huge for standard computers. To this end, we can fix some internal coordinates (ICs)  to reduce the number of degrees of freedom and fit the matrices into memory. There are three ways to accomplish this:
+In iMOD, the maximum macromolecular size allowed to perform NMA is constrained by the amount of memory needed to diagonalize the Hessian matrix, and it depends on the employed architecture. For example, in a standard 32-bit linux box (the maximum memory addressed per program is about 2Gb), it can solve systems up to approximately 15000 degrees of freedom (DoF), i.e. about 7000-8000 amino acids in proteins or 3000 nucleotides in nucleic acids. On the other hand, 64-bit machines are only limited by available RAM. For example, NMA of a 50000 DoFs system would need a 64-bit computer with about 30Gb of RAM. Therefore a dimensionality reduction is mandatory when the system under study becomes huge for standard computers. To this end, we can fix some internal coordinates (ICs)  to reduce the degrees of freedom and fit the matrices into memory. There are three ways to accomplish this:
 <ul>
 <li>Fixing custom ICs.</li>
 <li>Fixing by secondary structure</li>
 <li>Fixing ICs randomly.</li>
 </ul>
-Here we are going to comment on the simplest way to reduce the dimensionality, which is to fix randomly some ratio of dihedral angles. Other possibilities to fix IC will be discussed in the next section.  <a name="FAQ_R"></a><b>Fixing ICs randomly</b> For fixing randomly some ratio of dihedral angles, just type:
+Here we are commenting on the simplest way to reduce the dimensionality, which is to fix randomly some ratio of dihedral angles. Other possibilities for fixing IC will be discussed in the next section.  <a name="FAQ_R"></a><b>Fixing ICs randomly</b> For fixing randomly some ratio of dihedral angles, just type:
 <div class="box-note" style="text-align: justify;">imode 1aon.pdb -r 0.5 -o imodeR05</div>
 This will fix the 50% of available dihedral angles. Note the inter-chain rotational/translational degrees of freedom are always maintained mobile. To illustrate this reductionist approach we propose the following practical examples with a HUGE viral system:
 <ul>
 <li><a href="#FAQ_CCMV_NMA">NMA of the closed CCMV capsid</a></li>
 <li><a href="#FAQ_CCMV_MORPH">Morphing the closed CCMV capsid into the swollen form</a></li>
 </ul>
-<a name="FAQ_CCMV_NMA"></a>NMA of the closed CCMV capsid<hr />The capsid of the Cowpea Chlorotic Mottle Virus (CCMV) is a huge protein structure composed of 180 chains, 28620 amino acids and 214440 atoms. In terms of ICs it means about 58000 ICs: 56994 dihedral angles (f and ?) and 1074 inter-chain rotational/translational variables. Performing NMA with 58000 ICs it's impractical in standard PC box, since there would be needed a 64-bit computer with about 30Gb of RAM, and each diagonalization step would last even days. To overcome this we are going to fix the 90% of dihedral angles while keeping mobile all rotational/translational degrees of freedom:
+<a name="FAQ_CCMV_NMA"></a>NMA of the closed CCMV capsid<hr />The capsid of the Cowpea Chlorotic Mottle Virus (CCMV) is a huge protein structure composed of 180 chains, 28620 amino acids and 214440 atoms. In terms of ICs, it means about 58000 ICs: 56994 dihedral angles (f and ?) and 1074 inter-chain rotational/translational variables. Performing NMA with 58000 ICs it's impractical in a standard PC box, since there would be needed a 64-bit computer with about 30Gb of RAM, and each diagonalization step would last even days. To overcome this we are going to fix the 90% of dihedral angles while keeping mobile all rotational/translational degrees of freedom:
 <div class="box-note" style="text-align: justify;">imode <a href="media/files/1cwp_prot.pdb.gz">1cwp_prot.pdb</a> -o 1cwpDH09 -r 0.9 --save_fixfile</div>
 <pre>imode&gt;
 imode&gt; Welcome to the NMA in Internal Coordinates tool v1.10
