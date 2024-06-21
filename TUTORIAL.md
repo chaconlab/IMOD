@@ -1,6 +1,6 @@
 ### How are defined Coarse Grained (CG) levels?
 
-The coarse-graining model representation determines both the system mass distribution and the springs network. The available Coarse-Graining models for <b>proteins</b> are listed below:
+The coarse-graining model representation determines the system mass distribution and the springs network. The available Coarse-Graining models for <b>proteins</b> are listed below:
 <table style="background-color: white" border="2" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
