@@ -123,7 +123,7 @@ iMODE permits customized inverse exponential functions according to both topolog
 ```
 >imode 1ab3.pdb -P 2 --func funcTSS.txt -o imodeTSS
 ```
-The file (<a href="media/files/funcTSS.txt">funcTSS.txt</a>) is mandatory with the following format:<br />(Note, "#"-begining lines will be omitted)</p>
+The file (<a href="media/files/funcTSS.txt">funcTSS.txt</a>) is mandatory with the following format:<br />(Note, "#"-beginning lines will be omitted)</p>
 <pre># SS  n  k  x0 p
 HH    0  2 3.8 6
 HH    1  5 3.8 6
@@ -135,8 +135,8 @@ EE    2  3 3.8 6
 EE   -1  5 3.8 6
 XX   -1  1 3.8 6
 </pre>
-<p>Each line represents an inverse exponential function. The first column specifies the SS. For example, "HH" indicates that both atoms should belong to residues with a-helix SS. By default, SS identifiers are: "H" helix, "E" strand, and "C" coil; and any pair of them is allowed. The second column specifies the topology. Here topology represents the sequential distance between two residues; for example, if our protein sequence were ...A<span style="text-decoration: underline;">G</span>KT<span style="text-decoration: underline;">L</span>V..., the topology between underlined residues would be 3. The remaining columns define the inverse exponential functional parameters: k, x0 and p, (see the table above).</p>
-<p>The wildcards for SS and topology are "XX" and "-1", respectively.</p>
+Each line represents an inverse exponential function. The first column specifies the SS. For example, "HH" indicates that both atoms should belong to residues with a-helix SS. By default, SS identifiers are: "H" helix, "E" strand, and "C" coil; and any pair of them is allowed. The second column specifies the topology. Here topology represents the sequential distance between two residues; for example, if our protein sequence were ...A<span style="text-decoration: underline;">G</span>KT<span style="text-decoration: underline;">L</span>V..., the topology between underlined residues would be 3. The remaining columns define the inverse exponential functional parameters: k, x0 and p, (see the table above).
+The wildcards for SS and topology are "XX" and "-1", respectively.
 By default, the SS is computed internally, but any user-defined SS can be provided using the --ss option:
 ```
 >imode 1ab3.pdb -P 2 --func funcTSS.txt --ss 1ab3.ss -o imodeTSSE
@@ -145,13 +145,13 @@ For example, you can use DSSP to compute SS (<a href="files/1ab3.dssp">1ab3.dssp
 ```
 >perl dssp2ss.pl 1ab3.dssp 1ab3.ss
 ```
-Our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>) is a simple two-column ASCII file. The first column corresponds to the sequence index, and the second to a single-character SS identifier.  <
+Our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>) is a simple two-column ASCII file. The first column corresponds to the sequence index, and the second to a single-character SS identifier.  
 
 #### Customize potential energy by topology only
 
-<p>The basic command for topology is:  
+The basic command for topology is:  
 ```
->imode 1ab3.pdb -P 2 --func funcTOP.txt -o imodeTOP</div>
+>imode 1ab3.pdb -P 2 --func funcTOP.txt -o imodeTOP
 ```
 <p>The topology functions file (<a href="media/files/funcTOP.txt">funcTOP.txt</a>) is:</p>
 <pre># SS  n  k  x0 p
@@ -209,12 +209,12 @@ The user can define its potential through a file using the -K option;
 1 6 8.701856E-01
 ...........
 </pre>
-<p>Each line represents one spring. The first and second colums are the atomic indices (begining with 1), and the third is the force constant.</p>
-<p>To obtain a Kfile template for your macromolecule that you can adapt to your convenience, use:
+Each line represents one spring. The first and second columns are the atomic indices (beginning with 1), and the third is the force constant
+To obtain a Kfile template for your macromolecule that you can adapt to your convenience, use:
 ```
 >imode 1ab3.pdb -P 1 --k1_c 10 --save_Kfile -o imodeKc
 ```
-The resulting file, <b><a href="media/files/imodeKc_Kfile.dat">imodeKc_Kfile.dat</a></b>, will contain the force constants for current potential energy model, in this case, the simple cutoff model.</p>
+The resulting file, <b><a href="media/files/imodeKc_Kfile.dat">imodeKc_Kfile.dat</a></b>, will contain the force constants for the current potential energy model, in this case, the simple cutoff model.</p>
 
 ### Dealing with huge systems?
 
@@ -233,7 +233,7 @@ This will fix the 50% of available dihedral angles. Note the inter-chain rotatio
 <li><a href="#FAQ_CCMV_NMA">NMA of the closed CCMV capsid</a></li>
 <li><a href="#FAQ_CCMV_MORPH">Morphing the closed CCMV capsid into the swollen form</a></li>
 </ul>
-<a name="FAQ_CCMV_NMA"></a>NMA of the closed CCMV capsid<hr />The capsid of the Cowpea Chlorotic Mottle Virus (CCMV) is a huge protein structure composed of 180 chains, 28620 amino acids and 214440 atoms. In terms of ICs, it means about 58000 ICs: 56994 dihedral angles (f and ?) and 1074 inter-chain rotational/translational variables. Performing NMA with 58000 ICs it's impractical in a standard PC box, since there would be needed a 64-bit computer with about 30Gb of RAM, and each diagonalization step would last even days. To overcome this we are going to fix the 90% of dihedral angles while keeping mobile all rotational/translational degrees of freedom:
+<a name="FAQ_CCMV_NMA"></a>NMA of the closed CCMV capsid<hr />The capsid of the Cowpea Chlorotic Mottle Virus (CCMV) is a huge protein structure composed of 180 chains, 28620 amino acids and 214440 atoms. ICs mean about 58000 ICs: 56994 dihedral angles and 1074 inter-chain rotational/translational variables. Performing NMA with 58000 ICs is impractical in a standard PC box since a 64-bit computer with about 30Gb of RAM would be needed, and each diagonalization step would last even days. To overcome this we are going to fix the 90% of dihedral angles while keeping mobile all rotational/translational degrees of freedom:
 <div class="box-note" style="text-align: justify;">imode <a href="media/files/1cwp_prot.pdb.gz">1cwp_prot.pdb</a> -o 1cwpDH09 -r 0.9 --save_fixfile</div>
 <pre>imode&gt;
 imode&gt; Welcome to the NMA in Internal Coordinates tool v1.10
