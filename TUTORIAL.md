@@ -149,7 +149,7 @@ Our SS file format (<a href="files/1ab3.ss">1ab3.ss</a>) is a simple two-column 
 
 #### Customize potential energy by topology only
 
-<p>The basic command for topology is:
+<p>The basic command for topology is:  
 ```
 >imode 1ab3.pdb -P 2 --func funcTOP.txt -o imodeTOP</div>
 ```
