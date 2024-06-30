@@ -123,7 +123,7 @@ iMODE permits customized inverse exponential functions according to both topolog
 ```
 >imode 1ab3.pdb -P 2 --func funcTSS.txt -o imodeTSS
 ```
-The file (<a href="media/files/funcTSS.txt">funcTSS.txt</a>) is mandatory with the following format:<br />(Note, "#"-beginning lines will be omitted)</p>
+The file (<a href="assets/funcTSS.txt">funcTSS.txt</a>) is mandatory with the following format:<br />(Note, "#"-beginning lines will be omitted)</p>
 <pre># SS  n  k  x0 p
 HH    0  2 3.8 6
 HH    1  5 3.8 6
@@ -153,7 +153,7 @@ The basic command for topology is:
 ```
 >imode 1ab3.pdb -P 2 --func funcTOP.txt -o imodeTOP
 ```
-<p>The topology functions file (<a href="media/files/funcTOP.txt">funcTOP.txt</a>) is:</p>
+<p>The topology functions file (<a href="assets/funcTOP.txt">funcTOP.txt</a>) is:</p>
 <pre># SS  n  k  x0 p
 XX    0  2 3.8 6
 XX    1  9 3.8 6
@@ -169,7 +169,7 @@ The command to take into account SS is:
 ```
 >imode 1ab3.pdb -P 2 --func funcHE.txt -o imodeHE
 ```
-<p>The functions file (<a href="media/files/funcHE.txt">funcHE.txt</a>) is:</p>
+<p>The functions file (<a href="assets/funcHE.txt">funcHE.txt</a>) is:</p>
 <pre># SS (j-i) k  x0 p
 HH     -1  2 3.8 6
 EE     -1  5 3.8 6
@@ -181,7 +181,7 @@ XX     -1  1 3.8 6
 ```
 >imode 1ab3.pdb -P 2 --func funcCX.txt -o imodeCX
 ```
-The functions file (<a href="media/files/funcCX.txt">funcCX.txt</a>) is:</p>
+The functions file (<a href="assets/funcCX.txt">funcCX.txt</a>) is:</p>
 <pre># SS (j-i)   k  x0 p
 CC     -1  0.2 3.8 6
 XX     -1    1 3.8 6
