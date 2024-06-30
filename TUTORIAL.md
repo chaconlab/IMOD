@@ -298,7 +298,8 @@ This way, only 6666 ICs were considered. Below you can check 5th and 18th normal
 <tbody>
 <tr>
 <td>
-<video    src="https://github.com/chaconlab/IMOD/assets/19269061/cea9efa2-bb02-41a5-84d0-8ceef242b930" autoplay="true" width="320" loop="true" controls="controls" >
+<video   src="https://github.com/chaconlab/IMOD/assets/19269061/cea9efa2-bb02-41a5-84d0-8ceef242b930" autoplay="true" loop="true" controls="controls" >
+<img src="https://github.com/chaconlab/IMOD/assets/19269061/cea9efa2-bb02-41a5-84d0-8ceef242b930" width="320">
 </video>  
 </td>
   <td><img src="assets/1cwpDH09_5_arrows_320.jpg" width="320" /></td>
@@ -306,6 +307,7 @@ This way, only 6666 ICs were considered. Below you can check 5th and 18th normal
 <tr>
 <td>
   <video    src="https://github.com/chaconlab/IMOD/assets/19269061/89555403-0f26-428a-ac29-6795848888be" autoplay="true" width="320" loop="true" controls="controls" >
+    <img src="https://github.com/chaconlab/IMOD/assets/19269061/89555403-0f26-428a-ac29-6795848888be"  width="320">
 </video>  
 </td>
 <td><img src="assets/1cwpDH09_18_arrows_320.jpg" width="320" /></td>
@@ -393,3 +395,28 @@ To customize just change "1" by "0" for fixing ICs, save it, and use it with imo
 <p>The extra zeros at some lines account for residues lacking corresponding ICs, i.e. Glycines and Alanines (no χ), and Prolines (no φ and χ). Note that the −x option must be added to keep mobile some χ dihedral angles. If the macromolecule had several chains, six inter-chain rotational/translational ICs are added: three x, y, and z translations and three rotations around x, y and z axis, respectively. For example, if there is a new chain after residue 187 (index 186) the mask file will be:</p>
 <pre>.........<br />186 1 0 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1 0 1<br />.........</pre>
 
+## Be free to include protein, DNA, RNA and rigid ligands altogether
+
+
+
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+<tbody>
+<tr>
+<td>
+  <video    src="https://github.com/chaconlab/IMOD/assets/19269061/deadaa1f-735d-4c2e-8d75-00923251e6d7" autoplay="true" loop="true" controls="controls" >
+</video>
+</td>
+<td>
+  <video    src="https://github.com/chaconlab/IMOD/assets/19269061/c2cc8573-ebe0-471c-a439-5828be6d7060" autoplay="true" loop="true" controls="controls" >
+</video>
+</td>
+<td>
+  <video    src="https://github.com/chaconlab/IMOD/assets/19269061/10b9d54b-cefc-4b8a-894d-c91150f7d73e" autoplay="true" loop="true" controls="controls" >
+</video></td>
+</tr>
+
+
+
+
+</tbody>
+</table>
