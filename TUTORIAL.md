@@ -298,15 +298,16 @@ This way, only 6666 ICs were considered. Below you can check 5th and 18th normal
 <tbody>
 <tr>
 <td>
-<video src="https://chaconlab.org/images/video/imod/1cwpDH09_5.mp4" width=320/>
+<video    src="https://github.com/chaconlab/IMOD/assets/19269061/cea9efa2-bb02-41a5-84d0-8ceef242b930" autoplay="true" width="320" loop="true" controls="controls" >
+</video>  
 </td>
   <td><img src="assets/1cwpDH09_5_arrows_320.jpg" width="320" /></td>
 </tr>
 <tr>
-<td><video controls="controls" width="320" height="259">
-  <source src="https://chaconlab.org/images/video/imod/1cwpDH09_18.mp4" type="video/mp4" />
-  Your browser does not support HTML5 video.
-  </video></td>
+<td>
+  <video    src="https://github.com/chaconlab/IMOD/assets/19269061/89555403-0f26-428a-ac29-6795848888be" autoplay="true" width="320" loop="true" controls="controls" >
+</video>  
+</td>
 <td><img src="assets/1cwpDH09_18_arrows_320.jpg" width="320" /></td>
 </tr>
 </tbody>
@@ -321,11 +322,14 @@ This way, only 6666 ICs were considered. Below you can check 5th and 18th normal
 </tbody>
 </table>
 As a consequence of both motion and system size we had to carry it out in two steps using some extra options: imorph 1cwp_prot.pdb ccmv_swln_1_full.vdb -i 200000 -r 1 -e 0.05 --morepdbs --nowrmsd -o ccmvmorph<br /> imorph ccmvmorph_fitted.pdb ccmv_swln_1_full.vdb -i 300000 -r 1 -n 0.99999 --morepdbs --prob plain -o ccmvmorph2 In first step we added: -e 0.05 to speed up convergence, --nowrmsd to disable the Weighted-RMSD alingment (which is not suited to huge motions), and --more_pdbs to force saving the fitted structure. Note this fitted structure was still about 5 Å Ca RMSD away from the target. In a second refinement step, we used all available modes (-n 0.99999) with a different mode selection scheme (--prob plain). Since we were closer to the target structure, the --nowrmsd option was removed. Note that to minimize NMA time in both steps only the rotational/translational ICs were considered (-r 1). Now a successful morphing <a href="media/files/ccmvmorph2_fitted.pdb.gz">result</a> is obtained. It's only 0.95 Å Ca RMSD from the target structure. You can check out its beautiful movie below.
-<div style="text-align: center;"><video controls="controls" width="320" height="259">
-  <source src="https://chaconlab.org/images/video/imod/ccmvmorph_movie.mp4" type="video/mp4" />
-  Your browser does not support HTML5 video.
-  </video></div>
+<div style="text-align: center;">
+    <video    src="https://github.com/chaconlab/IMOD/assets/19269061/6c8e167b-774d-4aae-aaa1-0fbfc377b4a9" autoplay="true" width="320" loop="true" controls="controls" >
+</video>  
+
   
+  </div>
+  
+
 ### How to fix ICs?
 
 To reduce the dimensionality of the problem With iMOD you can fix in many ways the internal coordinate variables :
@@ -338,7 +342,7 @@ To reduce the dimensionality of the problem With iMOD you can fix in many ways t
 
 #### Un-fix any χ dihedral angle
 
-<p>Our Internal Coordinates are φ, ψ and χ dihedral angles for proteins, and α, β, γ, ε, ζ and χ for nucleic acids (see figure below). Another six additional rotational/translational degrees of freedom are added every extra chain</p>
+<p>Our Internal Coordinates are φ, ψ, and χ dihedral angles for proteins and α, β, γ, ε, ζ, and χ for nucleic acids (see figure below). Another six additional rotational/translational degrees of freedom are added to every extra chain</p>
 <table class="text" style="width: 480px;" border="0" cellspacing="4" cellpadding="2">
 <tbody>
 <tr>
@@ -351,14 +355,14 @@ To reduce the dimensionality of the problem With iMOD you can fix in many ways t
 </tr>
 </tbody>
 </table>
-<p>By default we consider all but χ. The removal of these angles does not affect the low energy modes and will reduce the problem dimensionality by around 1/2 in proteins and 1/5 in nucleic acids.
+<p>By default we consider all but χ. Removing these angles does not affect the low energy modes and will reduce the problem dimensionality by around 1/2 in proteins and 1/5 in nucleic acids.
 ```  
 >imode 1ab3.pdb -x -o imodeX
 ```
   
 #### By secondary structure
   
-<p>With iMOd you can fix the ICs depending on the secondary structure SS it belongs to. This can be done using the −−ss option followed by a letter identifier (H for helix, E for beta strands and C for others). Note you may fix any combination of SS by adding an identifier as you need; for example, "−S EC" will fix beta and coil. To fix all ICs related to α-helices and β-sheets, just type prompt:
+<p>With iMOd you can fix the ICs depending on the secondary structure SS it belongs to. This can be done using the −−ss option followed by a letter identifier (H for helix, E for beta strands, and C for others). Note you may fix any combination of SS by adding an identifier as you need; for example, "−S EC" will fix beta and coil. To fix all ICs related to α-helices and β-sheets, just type prompt:
 ```
 >imode 1ab3.pdb -S HE --save_fixfile -o imodeHE</div>
 ```
@@ -378,7 +382,7 @@ Finally, you can fix any domain/s or region/s of your macromolecular structure u
 ```
 imode 1aon.pdb -f imodeFIX.fix -o imodeFIXED
 ```
-where the mask file <b>imodeFIX.fix</b> is an ASCII file with four columns. The first column is the residue index (beginning with 0), and the rest represents the φ, ψ and χ dihedral angles, respectively. In the nucleic acid case, the file will have seven columns instead of four,  to account for the (six) α, β, γ, ε, ζ and χ dihedral angles.</p>
+where the mask file <b>imodeFIX.fix</b> is an ASCII file with four columns. The first column is the residue index (beginning with 0), and the rest represents the φ, ψ, and χ dihedral angles, respectively. In the nucleic acid case, the file will have seven columns instead of four,  to account for the (six) α, β, γ, ε, ζ, and χ dihedral angles.</p>
 <p>A dummy mask (fully mobile) can be obtained using the −−save_fixfile option in iMODE program.
 ```  
 >imode 1aon.pdb --save_fixfile -o imodeFIX</div>
@@ -386,6 +390,6 @@ where the mask file <b>imodeFIX.fix</b> is an ASCII file with four columns. The
 such mask file looks like
 <pre>0 0 0 1<br />1 1 0 1<br />.........<br />276 1 0 1<br />277 0 0 1<br />278 1 0 1<br />.........<br />522 1 0 1<br />523 0 0 1</pre>
 To customize just change "1" by "0" for fixing ICs, save it, and use it with imode (−f option) to restrict the NMA only with the non-fixed ICs  variables.
-<p>The extra zeros at some lines account for residues lacking corresponding ICs, i.e. Glycines and Alanines (no χ), and Prolines (no φ and χ). Note that the −x option must be added on previous commands if you plan to keep mobile some χ dihedral angles. If the macromolecule had several chains, six inter-chain rotational/translational ICs are added: three x, y, and z translations and three rotations around x, y and z axis, respectively. For example, if there is a new chain after residue 187 (index 186) the mask file will be:</p>
+<p>The extra zeros at some lines account for residues lacking corresponding ICs, i.e. Glycines and Alanines (no χ), and Prolines (no φ and χ). Note that the −x option must be added to keep mobile some χ dihedral angles. If the macromolecule had several chains, six inter-chain rotational/translational ICs are added: three x, y, and z translations and three rotations around x, y and z axis, respectively. For example, if there is a new chain after residue 187 (index 186) the mask file will be:</p>
 <pre>.........<br />186 1 0 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1<br />187 1 0 1<br />.........</pre>
 
