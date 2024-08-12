@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="0.1375084419">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="0.1375084419" moduleId="org.eclipse.cdt.core.settings" name="Release_intel">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.ICCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" description="Intel icpc" errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.ICCErrorParser" id="0.1375084419" name="Release_intel" parent="org.eclipse.cdt.build.core.prefbase.cfg">
+					<folderInfo id="0.1375084419." name="/" resourcePath="">
+						<toolChain errorParsers="org.eclipse.cdt.core.ICCErrorParser" id="intel.toolchain.composerxe.base.240952592" name="Intel(R) C++ Compiler XE" superClass="intel.toolchain.composerxe.base">
+							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF" id="intel.platform.composerxe.base.1339566786" isAbstract="false" name="intel.platform.base" superClass="intel.platform.composerxe.base"/>
+							<builder buildPath="${workspace_loc:/nmatool}/Release_intel" enableAutoBuild="true" errorParsers="" id="org.eclipse.cdt.build.core.internal.builder.596647155" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="org.eclipse.cdt.build.core.internal.builder"/>
+							<tool id="intel.tool.archiver.composerxe.base.289935" name="Intel Archiver" superClass="intel.tool.archiver.composerxe.base"/>
+							<tool errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.ICCErrorParser" id="intel.tool.cpp.compiler.composerxe.base.147303382" name="Intel C++ Compiler" superClass="intel.tool.cpp.compiler.composerxe.base">
+								<option id="intel.compilestep.general.optimization2.1551139965" name="Optimization Level" superClass="intel.compilestep.general.optimization2" value="general.opt.speedHLO" valueType="enumerated"/>
+								<option id="intel.compilestep.optimization.inline.expand1.103988348" name="Inline Function Expansion" superClass="intel.compilestep.optimization.inline.expand1" value="inl.exp1.anysuitable" valueType="enumerated"/>
+								<option id="intel.compilestep.preprocessor.includedirectories.1263639159" name="Additional Include Directories (-I)" superClass="intel.compilestep.preprocessor.includedirectories" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="../../../src"/>
+								</option>
+								<inputType id="intel.cpp.compilestep.input.2093422614" name="C Sources" superClass="intel.cpp.compilestep.input"/>
+								<inputType id="intel.cpp.compilestep.asm.primary.68350582" superClass="intel.cpp.compilestep.asm.primary"/>
+								<inputType id="intel.cpp.compilestep.asm.1757949167" superClass="intel.cpp.compilestep.asm"/>
+							</tool>
+							<tool errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.ICCErrorParser" id="intel.tool.c.compiler.composerxe.base.387365399" name="Intel C Compiler" superClass="intel.tool.c.compiler.composerxe.base">
+								<inputType id="intel.c.compilestep.input.495863442" name="C Sources" superClass="intel.c.compilestep.input"/>
+								<inputType id="intel.c.compilestep.asm.primary.433692037" superClass="intel.c.compilestep.asm.primary"/>
+								<inputType id="intel.c.compilestep.asm.522300064" superClass="intel.c.compilestep.asm"/>
+							</tool>
+							<tool errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.ICCErrorParser" id="intel.tool.cpp.linker.composerxe.base.234495342" name="Intel C++ Linker" superClass="intel.tool.cpp.linker.composerxe.base">
+								<option id="intel.linkstep.perflibs.daal.1827582705" name="Use Intel(R) Data Analytics Acceleration Library" superClass="intel.linkstep.perflibs.daal" value="perflibs.mkl.none" valueType="enumerated"/>
+								<option id="intel.linkstep.options.static.1122197165" name="Link with Static Libraries (-static)" superClass="intel.linkstep.options.static" value="true" valueType="boolean"/>
+								<option id="intel.linkstep.libname.1560318195" name="Additional Libraries (-l)" superClass="intel.linkstep.libname" valueType="libs">
+									<listOptionValue builtIn="false" value="nma"/>
+									<listOptionValue builtIn="false" value="pdb2"/>
+									<listOptionValue builtIn="false" value="tools"/>
+								</option>
+								<option id="intel.linkstep.libpath.736567486" name="Search Directory for Libraries (-L)" superClass="intel.linkstep.libpath" valueType="stringList">
+									<listOptionValue builtIn="false" value="../../../lib"/>
+								</option>
+								<inputType id="intel.linkstep.input.1238205626" superClass="intel.linkstep.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+								<outputType id="intel.linkstep.output.626278652" outputPrefix="../../../bin/" superClass="intel.linkstep.output"/>
+							</tool>
+							<tool id="intel.tool.c.linker.composerxe.base.1296382257" name="Intel C Linker" superClass="intel.tool.c.linker.composerxe.base"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="nmatool.null.489121798" name="nmatool"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="0.1375084419">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Release_intel">
+			<resource resourceType="PROJECT" workspacePath="/nmatool"/>
+		</configuration>
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/nmatool"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+</cproject>
